@@ -20,21 +20,13 @@ static char selfgcolor[]            = "#ffffff";
 static char selbordercolor[]        = "#8f423c";
 static char selbgcolor[]            = "#8f423c";
 
-/* Grey *//*
+/* grey *//*
 static char normbgcolor[]           = "#89818e";
 static char normbordercolor[]       = "#89818e";
 static char normfgcolor[]           = "#ffffff";
 static char selfgcolor[]            = "#ffffff";
 static char selbordercolor[]        = "#544c61";
 static char selbgcolor[]            = "#544c61";
-*/
-/* Purple *//*
-static char normbgcolor[]           = "#1D2330";
-static char normbordercolor[]       = "#1D2330";
-static char normfgcolor[]           = "#ffffff";
-static char selfgcolor[]            = "#ffffff";
-static char selbordercolor[]        = "#84598d";
-static char selbgcolor[]            = "#84598d";
 */
 static char *colors[][3] = {
        /*               fg           bg           border   */
