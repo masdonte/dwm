@@ -15,6 +15,7 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 ## Dependencies
 + st
 + dmenu
++ slock (suckless lockscreen)
 + https://aur.archlinux.org/packages/libxft-bgra/ (this patch is necessary for colored emoji)
 
 ## Keybinding
