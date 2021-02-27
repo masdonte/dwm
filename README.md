@@ -1,6 +1,8 @@
 # Binette's build of dwm
 
-Dwm is an extremely fast, small, and dynamic window manager. This is my build of dwm with only a few patches that i need, feel free to visit the suckless website and add the patches you want. 
+Dwm is an extremely fast, small, and dynamic window manager. This is my build of dwm with only a few patches that i need, feel free to visit the suckless website and add the patches you want (rename the `config.h` to `config.def.h` before applying a patch). 
+
+![Screenshot of my desktop](https://raw.githubusercontent.com/Binetto/dwm/master/screenshot.png)
 
 ## Patches list
 + alpha (transparency)
@@ -16,7 +18,7 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 + st
 + dmenu
 + slock (suckless lockscreen)
-+ https://aur.archlinux.org/packages/libxft-bgra/ (this patch is necessary for colored emoji)
++ https://aur.archlinux.org/packages/libxft-bgra/ (this package is necessary for colored emoji)
 
 ## Keybinding
 The MODKEY is set to the Super key (aka the Windows key).
@@ -39,5 +41,5 @@ The MODKEY is set to the Super key (aka the Windows key).
 | `MODKEY + ,` | switches focus to prev monitors |
 
 ## Installation
-Clone this repo `git clone https://github.com/Binetto/dwm`, edit the `config.h` file and run `sudo make install`.
+Clone this repo `git clone https://github.com/Binetto/dwm.git`, edit the `config.h` file and run `sudo make install`.
 Everytime you edit the config file, you need to recompile `sudo make clean install`.
