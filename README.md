@@ -4,7 +4,7 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 
 ## Patches list
 + alpha (transparency)
-+ fullscreen-compilation (i added a few line to fix fakefullscreen issues with chromium based browser. Thanks to NRK)  https://github.com/paniash/dwm/blob/master/patches/dwm-fullscreen-compilation-6.2.diff
++ fullscreen-compilation https://github.com/paniash/dwm/blob/master/patches/dwm-fullscreen-compilation-6.2.diff (i added a few line to fix fakefullscreen issues with chromium based browser. Thanks to NRK)
 + movestack (move client in the stack)
 + staticstatus (force the statusbar to stay on a single monitor)
 + sticky (get a client visible on all tag)
