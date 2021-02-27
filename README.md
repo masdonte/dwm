@@ -41,5 +41,5 @@ The MODKEY is set to the Super key (aka the Windows key).
 | `MODKEY + ,` | switches focus to prev monitors |
 
 ## Installation
-Clone this repo `git clone https://github.com/Binetto/dwm`, edit the `config.h` file and run `sudo make install`.
+Clone this repo `git clone https://github.com/Binetto/dwm.git`, edit the `config.h` file and run `sudo make install`.
 Everytime you edit the config file, you need to recompile `sudo make clean install`.
