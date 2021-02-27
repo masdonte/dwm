@@ -19,6 +19,11 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 + dmenu
 + slock (suckless lockscreen)
 + https://aur.archlinux.org/packages/libxft-bgra/ (this package is necessary for colored emoji)
++ awesome font (brand and solid) 
+or change the tags icon in the `config.h` file at line 41:
+``` /* tagging */
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; 
+```
 
 ## Keybinding
 The MODKEY is set to the Super key (aka the Windows key).
