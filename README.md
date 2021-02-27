@@ -2,6 +2,8 @@
 
 Dwm is an extremely fast, small, and dynamic window manager. This is my build of dwm with only a few patches that i need, feel free to visit the suckless website and add the patches you want. 
 
+![Screenshot of my desktop](https://raw.githubusercontent.com/Binetto/dwm/master/screenshot.png)
+
 ## Patches list
 + alpha (transparency)
 + fullscreen-compilation - https://github.com/paniash/dwm/blob/master/patches/dwm-fullscreen-compilation-6.2.diff (i added a few line to fix fakefullscreen issues with chromium based browser. Thanks to NRK)
