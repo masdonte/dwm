@@ -100,7 +100,6 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]      = { "st",  NULL };
 static const char *killffmpeg[]   = { "killall", "ffmpeg", NULL };
-static const char *youtube[]      = { "freetube", NULL };
 static const char *termbrowser[]  = { "qutebrowser", NULL };
 static const char *browser[]      = { "brave", NULL };
 static const char *editor[]       = { "vscodium", NULL };
@@ -192,7 +191,6 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,          	XK_b,      spawn,	   {.v = browser } },
 	{ MODKEY|Mod1Mask,       	XK_c,      spawn,          {.v = editor } },
         { MODKEY|Mod1Mask,       	XK_v,      spawn,          {.v = VM } },
-        { MODKEY|Mod1Mask,       	XK_y,      spawn,          {.v = youtube } },
 	{ MODKEY|Mod1Mask,       	XK_f,      spawn,          {.v = Fmanager } },
 	{ MODKEY|Mod1Mask,       	XK_d,      spawn,          {.v = discord } },
 	{ MODKEY|Mod1Mask,       	XK_s,      spawn,          SHCMD("~/.local/bin/spotify.sh") },
@@ -201,7 +199,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          SHCMD("st -e newsboat") },
 
 	/* Dmenu scripts launched with ALT + CTRL + KEY */
-	{ 0|Mod1Mask|ControlMask,		XK_e,	   spawn,	   SHCMD("$HOME/.dmenu/dmenu-edit-configs.sh") },
+	{ 0|Mod1Mask|ControlMask,		XK_e,	   spawn,	   SHCMD("$HOME/.dmenu/configs.sh") },
 
 	/* Screenshot & recoding hotkey */
 	{ 0,                        	XK_Print,  spawn,          SHCMD("maim -s | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
