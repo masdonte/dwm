@@ -30,7 +30,7 @@ The MODKEY is set to the Super key (aka the Windows key).
 
 | Keybinding | Action |
 | :--- | :--- |
-| `MODKEY + RETURN` | opens terminal (st is the terminal) |
+| `MODKEY + RETURN` | opens terminal |
 | `MODKEY + SHIFT + RETURN` | opens dmenu |
 | `MODKEY + Q` | closes focused window |
 | `MODKEY + SHIFT + q` | quits dwm |
