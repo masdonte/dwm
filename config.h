@@ -47,11 +47,12 @@ static const Rule rules[] = {
 	 */
 	/* class           instance    title       tags mask     isfloating   monitor */
 	{ "Brave",         NULL,       NULL,       (1 << 1),         0,         -1 },
+	{ "Chromium",      NULL,       NULL,       (1 << 1),         0,         -1 },
 	{ "qutebrowser",   NULL,       NULL,       0,                0,         -1 },
 	{ "Ripcord",  	   NULL,       NULL,       (1 << 2),         0,         -1 },
 	{ "discord",  	   NULL,       NULL,       (1 << 2),         0,         -1 },
 	{ "mpv",           NULL,       NULL,       (1 << 3),         0,         -1 },
-	{ "spotify",       NULL,       NULL,       (1 << 4),         0,         -1 },
+	{ "Spotify",       NULL,       NULL,       (1 << 4),         0,         -1 },
 	{ "Steam",         NULL,       NULL,       (1 << 7),         0,         -1 },
 	{ "VScodium",      NULL,       NULL,       1,                0,         -1 },
 
@@ -106,6 +107,7 @@ static const char *editor[]       = { "vscodium", NULL };
 static const char *VM[]		  = { "virt-manager", NULL };
 static const char *Fmanager[]     = { "st", "-e", "lf", NULL };
 static const char *discord[]	  = { "discord", NULL };
+static const char *spotify[]	  = { "/home/binette/.local/bin/spotify.sh", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -193,7 +195,7 @@ static Key keys[] = {
         { MODKEY|Mod1Mask,       	XK_v,      spawn,          {.v = VM } },
 	{ MODKEY|Mod1Mask,       	XK_f,      spawn,          {.v = Fmanager } },
 	{ MODKEY|Mod1Mask,       	XK_d,      spawn,          {.v = discord } },
-	{ MODKEY|Mod1Mask,       	XK_s,      spawn,          SHCMD("~/.local/bin/spotify.sh") },
+	{ MODKEY|Mod1Mask,       	XK_s,      spawn,          {.v = spotify } },
 	{ MODKEY|Mod1Mask,       	XK_r,      spawn,          SHCMD("ripcord") },
 	{ MODKEY|Mod1Mask,       	XK_h,      spawn,          SHCMD("st -e htop") },
 	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          SHCMD("st -e newsboat") },
