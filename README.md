@@ -18,10 +18,11 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 + zoomswap (swap between the focused window and the master)
 
 ## Dependencies
-+ st
-+ dmenu
++ [st](https://st.suckless.org/)
++ [dmenu](https://tools.suckless.org/dmenu/)
++ [slstatus](https://tools.suckless.org/slstatus/)
 + [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) (this package is necessary for colored emoji)
-+ awesome font (brand and solid) 
++ [awesome font](https://fontawesome.com/how-to-use/on-the-desktop/setup/getting-started) (brand and solid) 
 or change the tags icon in the `config.h` file at line 41:
 ``` 
 /* tagging */
