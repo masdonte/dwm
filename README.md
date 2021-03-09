@@ -34,7 +34,7 @@ The MODKEY is set to the Super key (aka the Windows key).
 | `MODKEY + SHIFT + RETURN` | opens dmenu |
 | `MODKEY + Q` | closes focused window |
 | `MODKEY + SHIFT + q` | quits dwm |
-| `MODKEY + 1-9` | switch focus to workspace |
+| `MODKEY + 1-5` | switch focus to workspace |
 | `MODKEY + SHIFT + 1-9` | send focused window to workspace |
 | `MODKEY + j` | switches focus between windows in the stack |
 | `MODKEY + k` | switches focus between windows in the stack |
