@@ -13,21 +13,12 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=11" };
 static const char dmenufont[]       = "monospace:size=11";
 /* forest theme */
-static char normbgcolor[]           = "#5a7260";
-static char normbordercolor[]       = "#5a7260";
+static char normbgcolor[]           = "#181818";
+static char normbordercolor[]       = "#8f423c";
 static char normfgcolor[]           = "#ffffff";
 static char selfgcolor[]            = "#ffffff";
-static char selbordercolor[]        = "#8f423c";
+static char selbordercolor[]        = "#5a7260";
 static char selbgcolor[]            = "#8f423c";
-
-/* grey *//*
-static char normbgcolor[]           = "#89818e";
-static char normbordercolor[]       = "#89818e";
-static char normfgcolor[]           = "#ffffff";
-static char selfgcolor[]            = "#ffffff";
-static char selbordercolor[]        = "#544c61";
-static char selbgcolor[]            = "#544c61";
-*/
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -38,7 +29,8 @@ static char *colors[][3] = {
 static const int statmonval = 0;
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+//static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -117,10 +109,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
+/*	TAGKEYS(                        XK_6,                      5)
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	TAGKEYS(                        XK_9,                      8)*/
 
 	/* Important bind */
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = dmenucmd } },
