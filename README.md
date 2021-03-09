@@ -5,13 +5,16 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 ![Screenshot of my desktop](https://raw.githubusercontent.com/Binetto/dwm/master/screenshot.png)
 
 ## Patches list
-+ alpha (transparency)
-+ [fullscreen-compilation](https://github.com/paniash/dwm/blob/master/patches/dwm-fullscreen-compilation-6.2.diff) (i added a few line to fix fakefullscreen issues with chromium based browser. Thanks to [NRK](https://github.com/N-R-K))
++ bar-height (change the status bar size)
++ cool-autostart (execute command on startup in the config.h)
++ fixborders (borders won't be transparente)
++ [fullscreen-compilation](https://github.com/paniash/dwm/blob/master/patches/dwm-fullscreen-compilation-6.2.diff) (i added a line to fix fakefullscreen issues with chromium based browser. Thanks to [NRK](https://github.com/N-R-K))
 + movestack (move client in the stack)
++ pertag (keep the layout per tag instead of per monitor)
 + staticstatus (force the statusbar to stay on a single monitor)
 + sticky (get a client visible on all tag)
++ titlecolor (add a new color scheme for the title in the statusbar)
 + vanitygaps (add gaps)
-+ xrdb (read color from .Xresources)
 + zoomswap (swap between the focused window and the master)
 
 ## Dependencies

@@ -3,26 +3,38 @@
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 5;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 5;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 5;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 5;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 5;        /* horiz inner gap between windows */
+static const unsigned int gappiv    = 5;        /* vert inner gap between windows */
+static const unsigned int gappoh    = 5;        /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 5;        /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=11" };
+static const int user_bh            = 20;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const char *fonts[]          = { "CascadiaMono:size=11" };
 static const char dmenufont[]       = "monospace:size=11";
-/* forest theme */
-static char normbgcolor[]           = "#181818";
-static char normbordercolor[]       = "#8f423c";
-static char normfgcolor[]           = "#ffffff";
-static char selfgcolor[]            = "#ffffff";
-static char selbordercolor[]        = "#5a7260";
-static char selbgcolor[]            = "#8f423c";
-static char *colors[][3] = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+static const char col_gray1[]       = "#181818";
+static const char col_gray2[]       = "#8f423c";
+static const char col_gray3[]       = "#5a7260";
+static const char col_gray4[]       = "#ffffff";
+static const char col_cyan[]        = "#ffffff";
+static const char *colors[][3]      = {
+	/*               fg         bg         border   */
+	[SchemeNorm] =   { col_cyan, col_gray1,  col_gray2 },
+	[SchemeSel]  =   { col_cyan, col_gray2,  col_gray3 },
+	[SchemeTitle]  = { col_gray4, col_gray1,  col_gray1 },
+};
+
+static const char *const autostart[] = {
+	"slstatus", NULL,
+	"dunst", NULL, 
+	"hsetroot", "-full", "/home/binette/.config/wall.png", NULL,
+	"xrdb", "/home/binette/.config/xcolors/jmbi", NULL,
+	"dunst", NULL,
+	"lxsession", NULL,
+	"numlockx", "on", NULL,
+	"unclutter", NULL,
+	NULL /* terminate */
 };
 
 /* staticstatus */
@@ -36,17 +48,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class           instance    title       tags mask     isfloating   monitor */
+	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Brave",         NULL,       NULL,       (1 << 1),         0,         -1 },
 	{ "Chromium",      NULL,       NULL,       (1 << 1),         0,         -1 },
-	{ "qutebrowser",   NULL,       NULL,       0,                0,         -1 },
+	{ "qutebrowser",   NULL,       NULL,       (1 << 1),         0,         -1 },
 	{ "Ripcord",  	   NULL,       NULL,       (1 << 2),         0,         -1 },
 	{ "discord",  	   NULL,       NULL,       (1 << 2),         0,         -1 },
-	{ "mpv",           NULL,       NULL,       (1 << 3),         0,         -1 },
+	{ "mpv",           NULL,       NULL,       (1 << 3),         1,         -1 },
 	{ "Spotify",       NULL,       NULL,       (1 << 4),         0,         -1 },
-	{ "Steam",         NULL,       NULL,       (1 << 7),         0,         -1 },
 	{ "VScodium",      NULL,       NULL,       1,                0,         -1 },
-
 };
 
 /* layout(s) */
@@ -89,10 +99,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]      = { "st",  NULL };
 static const char *killffmpeg[]   = { "killall", "ffmpeg", NULL };
-static const char *termbrowser[]  = { "qutebrowser", NULL };
 static const char *browser[]      = { "brave", NULL };
 static const char *editor[]       = { "vscodium", NULL };
 static const char *VM[]		  = { "virt-manager", NULL };
@@ -120,7 +129,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask,		XK_q,	   spawn,          SHCMD("slock") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 
 	/* Gaps */
 	{ MODKEY|ShiftMask,             XK_a,      togglegaps,     {0} },
@@ -192,7 +200,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          SHCMD("st -e newsboat") },
 
 	/* Dmenu scripts launched with ALT + CTRL + KEY */
-	{ 0|Mod1Mask|ControlMask,		XK_e,	   spawn,	   SHCMD("$HOME/.dmenu/configs.sh") },
+	{ 0|Mod1Mask|ControlMask,	XK_e,	   spawn,	   SHCMD("$HOME/.dmenu/configs.sh") },
 
 	/* Screenshot & recoding hotkey */
 	{ 0,                        	XK_Print,  spawn,          SHCMD("maim -s | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
@@ -215,3 +223,4 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
+
