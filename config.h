@@ -26,15 +26,12 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
+	/* status bar */
 	"slstatus", NULL,
-	"dunst", NULL, 
-	"hsetroot", "-full", "/home/binette/.config/wall.png", NULL,
+	/* wallpaper & xresources */
+	"hsetroot", "-full", "/home/binette/.config/suckless/dwm/wall.png", NULL,
 	"xrdb", "/home/binette/.config/xcolors/jmbi", NULL,
-	"dunst", NULL,
-	"lxsession", NULL,
-	"numlockx", "on", NULL,
-	"unclutter", NULL,
-	NULL /* terminate */
+	NULL  // terminate
 };
 
 /* staticstatus */
@@ -54,7 +51,7 @@ static const Rule rules[] = {
 	{ "qutebrowser",   NULL,       NULL,       (1 << 1),         0,         -1 },
 	{ "Ripcord",  	   NULL,       NULL,       (1 << 2),         0,         -1 },
 	{ "discord",  	   NULL,       NULL,       (1 << 2),         0,         -1 },
-	{ "mpv",           NULL,       NULL,       (1 << 3),         1,         -1 },
+	{ "mpv",           NULL,       NULL,       (1 << 3),         0,         -1 },
 	{ "Spotify",       NULL,       NULL,       (1 << 4),         0,         -1 },
 	{ "VScodium",      NULL,       NULL,       1,                0,         -1 },
 };

@@ -18,12 +18,11 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 + zoomswap (swap between the focused window and the master)
 
 ## Dependencies
-+ [st](https://st.suckless.org/)
-+ [dmenu](https://tools.suckless.org/dmenu/)
-+ [slstatus](https://tools.suckless.org/slstatus/)
-+ [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) (this package is necessary for colored emoji)
-+ [awesome font](https://fontawesome.com/how-to-use/on-the-desktop/setup/getting-started) (brand and solid) 
-or change the tags icon in the `config.h` file at line 41:
++ st
++ dmenu
++ slstatus
++ libxft-bgra
++ awesome font or change the tags icon in the `config.h` file at line 41:
 ``` 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; 
@@ -39,7 +38,7 @@ The MODKEY is set to the Super key (aka the Windows key).
 | `MODKEY + Q` | closes focused window |
 | `MODKEY + SHIFT + q` | quits dwm |
 | `MODKEY + 1-5` | switch focus to workspace |
-| `MODKEY + SHIFT + 1-9` | send focused window to workspace |
+| `MODKEY + SHIFT + 1-5` | send focused window to workspace |
 | `MODKEY + j` | switches focus between windows in the stack |
 | `MODKEY + k` | switches focus between windows in the stack |
 | `MODKEY + SHIFT + j` | rotates the windows in the stack |
