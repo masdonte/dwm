@@ -37,6 +37,7 @@ The MODKEY is set to the Super key (aka the Windows key).
 | Keybinding | Action |
 | :--- | :--- |
 | `MODKEY + RETURN` | opens terminal |
+| `ALT + t` | opens terminal in scratchpad |
 | `MODKEY + SHIFT + RETURN` | opens dmenu |
 | `MODKEY + Q` | closes focused window |
 | `MODKEY + SHIFT + q` | quits dwm |
