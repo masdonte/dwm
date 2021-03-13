@@ -19,23 +19,29 @@ static const char col_gray3[]       = "#5a7260";
 static const char col_gray4[]       = "#ffffff";
 static const char col_cyan[]        = "#ffffff";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] =   { col_cyan, col_gray1,  col_gray2 },
-	[SchemeSel]  =   { col_cyan, col_gray2,  col_gray3 },
-	[SchemeTitle]  = { col_gray4, col_gray1,  col_gray1 },
+	/*                      fg         bg          border    */
+	[SchemeNorm]      =   { col_cyan,  col_gray1,  col_gray2 },
+	[SchemeSel]       =   { col_cyan,  col_gray2,  col_gray3 },
+	[SchemeStatus]    =   { col_gray4, col_gray1,  "#000000" }, // Statusbar right 
+	[SchemeTagsSel]   =   { col_gray4, col_gray2,  "#000000" }, // Tagbar left selected 
+	[SchemeTagsNorm]  =   { col_gray4, col_gray1,  "#000000" }, // Tagbar left unselected 
+        [SchemeInfoSel]   =   { col_gray4, col_gray1,  "#000000" }, // infobar middle selected 
+        [SchemeInfoNorm]  =   { col_gray4, col_gray1,  "#000000" }, // infobar middle unselected 
 };
 
-static const char *const autostart[] = {
-	/* status bar */
-	"slstatus", NULL,
-	/* wallpaper & xresources */
-	"hsetroot", "-full", "/home/binette/.config/suckless/dwm/wall.png", NULL,
-	"xrdb", "/home/binette/.config/xcolors/jmbi", NULL,
-	NULL  // terminate
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = {"st", "-n", "spfm", "-g", "100x41", "-e", "lf", NULL };
+const char *spcmd3[] = {"st", "-n", "sppulsemixer", "-g", "120x34", "-e", "pulsemixer", NULL };
+static Sp scratchpads[] = {
+	/* name          cmd  */
+	{"spterm",	 spcmd1},
+	{"splf",	 spcmd2},
+	{"sppulsemixer", spcmd3},
 };
-
-/* staticstatus */
-static const int statmonval = 0;
 
 /* tagging */
 static const char *tags[] = { "", "", "", "", "" };
@@ -45,15 +51,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Brave",         NULL,       NULL,       (1 << 1),         0,         -1 },
-	{ "Chromium",      NULL,       NULL,       (1 << 1),         0,         -1 },
-	{ "qutebrowser",   NULL,       NULL,       (1 << 1),         0,         -1 },
-	{ "Ripcord",  	   NULL,       NULL,       (1 << 2),         0,         -1 },
-	{ "discord",  	   NULL,       NULL,       (1 << 2),         0,         -1 },
-	{ "mpv",           NULL,       NULL,       (1 << 3),         0,         -1 },
-	{ "Spotify",       NULL,       NULL,       (1 << 4),         0,         -1 },
-	{ "VScodium",      NULL,       NULL,       1,                0,         -1 },
+	/* class           instance     		title       tags mask     isfloating   monitor */
+	{ "Brave",         NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "Ripcord",  	   NULL,        		NULL,       (1 << 2),         0,         -1 },
+	{ "discord",  	   NULL,        		NULL,       (1 << 2),         0,         -1 },
+	{ "mpv",           NULL,        		NULL,       (1 << 3),         1,         -1 },
+	{ "Spotify",       NULL,        		NULL,       (1 << 4),         0,         -1 },
+	{ "VScodium",      NULL,        		NULL,       1,                0,         -1 },
+	{ NULL,		   "spterm",    		NULL,	    SPTAG(0),	      1,	 -1 },
+	{ NULL,		   "spfm",	    		NULL,	    SPTAG(1),	      1,	 -1 },
+	{ NULL,		   "sppulsemixer", 	        NULL,	    SPTAG(2),	      1,	 -1 },
 };
 
 /* layout(s) */
@@ -96,7 +103,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray2, NULL };
 static const char *termcmd[]      = { "st",  NULL };
 static const char *killffmpeg[]   = { "killall", "ffmpeg", NULL };
 static const char *browser[]      = { "brave", NULL };
@@ -109,7 +116,7 @@ static const char *spotify[]	  = { "/home/binette/.local/bin/spotify.sh", NULL }
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	TAGKEYS(                        XK_1,                      0)
+TAGKEYS(                        	XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
@@ -174,7 +181,7 @@ static Key keys[] = {
 
 	/* Switch to specific layouts */
 
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+//	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 //	{ MODKEY,                       XK_space,  setlayout,      {0} },
 
 	/* Switching between monitors */
@@ -183,12 +190,17 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
+	/* Scratchpads */
+	{ 0|Mod1Mask,            	XK_t,  	   togglescratch,  {.ui = 0 } }, // terminal
+	{ 0|Mod1Mask,            	XK_f,	   togglescratch,  {.ui = 1 } }, // file manager
+	{ 0|Mod1Mask,            	XK_p,	   togglescratch,  {.ui = 2 } }, // sound mixer
+
 	/* Apps Launched with SUPER + KEY */
 
 	/* Apps Launched with SUPER + ALT + KEY */
 	{ MODKEY|Mod1Mask,          	XK_b,      spawn,	   {.v = browser } },
 	{ MODKEY|Mod1Mask,       	XK_c,      spawn,          {.v = editor } },
-        { MODKEY|Mod1Mask,       	XK_v,      spawn,          {.v = VM } },
+    { MODKEY|Mod1Mask,       		XK_v,      spawn,          {.v = VM } },
 	{ MODKEY|Mod1Mask,       	XK_f,      spawn,          {.v = Fmanager } },
 	{ MODKEY|Mod1Mask,       	XK_d,      spawn,          {.v = discord } },
 	{ MODKEY|Mod1Mask,       	XK_s,      spawn,          {.v = spotify } },
@@ -197,11 +209,11 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          SHCMD("st -e newsboat") },
 
 	/* Dmenu scripts launched with ALT + CTRL + KEY */
-	{ 0|Mod1Mask|ControlMask,	XK_e,	   spawn,	   SHCMD("$HOME/.dmenu/configs.sh") },
+	{ 0|Mod1Mask|ControlMask,	XK_e,	   spawn,	   SHCMD("$HOME/.local/bin/dmenu/configs.sh") },
 
 	/* Screenshot & recoding hotkey */
 	{ 0,                        	XK_Print,  spawn,          SHCMD("maim -s | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
-	{ 0|Mod1Mask, 			XK_Print,  spawn,          {.v = killffmpeg } },	// kill ffmpeg processes
+	{ 0|Mod1Mask, 			XK_Print,  spawn,          {.v = killffmpeg } },
 };
 
 /* button definitions */
