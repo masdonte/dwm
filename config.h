@@ -44,7 +44,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -74,10 +74,10 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
+	{ "H[]",      deck },
 	{ "[M]",      monocle },
 	{ "[@]",      spiral },
 	{ "[\\]",     dwindle },
-	{ "H[]",      deck },
 	{ "TTT",      bstack },
 	{ "===",      bstackhoriz },
 	{ "HHH",      grid },
@@ -121,9 +121,9 @@ TAGKEYS(                        	XK_1,                      0)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-/*	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_6,                      5)
 	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
+/*	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)*/
 
 	/* Important bind */
@@ -181,7 +181,7 @@ TAGKEYS(                        	XK_1,                      0)
 
 	/* Switch to specific layouts */
 
-//	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 //	{ MODKEY,                       XK_space,  setlayout,      {0} },
 
 	/* Switching between monitors */
@@ -213,6 +213,7 @@ TAGKEYS(                        	XK_1,                      0)
 
 	/* Screenshot & recoding hotkey */
 	{ 0,                        	XK_Print,  spawn,          SHCMD("maim -s | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
+//	{ 0,                        	XK_Print,  spawn,          SHCMD("maim | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
 	{ 0|Mod1Mask, 			XK_Print,  spawn,          {.v = killffmpeg } },
 };
 
