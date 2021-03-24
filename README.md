@@ -6,6 +6,7 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 
 ## Patches list
 + alwayscenter (floating client will always be in the middle of the screen)
++ attachbelow (open new client below the focused one)
 + bar-height (change the status bar size)
 + colorbar (change the color of the bar)
 + cursorwarp (cursor will be on the focus client)
