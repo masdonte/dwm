@@ -24,17 +24,37 @@ static const char *colors[][3]      = {
     [SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
-/* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = {"st", "-n", "spfm", "-g", "100x41", "-e", "lf", NULL };
+const char *spcmd3[] = {"st", "-n", "sppulsemixer", "-g", "120x34", "-e", "pulsemixer", NULL };
+static Sp scratchpads[] = {
+	/* name          cmd  */
+	{"spterm",	 spcmd1},
+	{"splf",	 spcmd2},
+	{"sppulsemixer", spcmd3},
+};
 
+/* tagging */
+static const char *tags[] = { "", "", "", "", "", "" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Brave",         NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "Ripcord",  	   NULL,        		NULL,       (1 << 2),         0,         -1 },
+	{ "discord",  	   NULL,        		NULL,       (1 << 2),         0,         -1 },
+	{ "mpv",           NULL,        		NULL,       (1 << 3),         1,         -1 },
+	{ "Spotify",       NULL,        		NULL,       (1 << 4),         0,         -1 },
+	{ "VScodium",      NULL,        		NULL,       1,                0,         -1 },
+	{ NULL,		   "spterm",    		NULL,	    SPTAG(0),	      1,	 -1 },
+	{ NULL,		   "spfm",	    		NULL,	    SPTAG(1),	      1,	 -1 },
+	{ NULL,		   "sppulsemixer", 	        NULL,	    SPTAG(2),	      1,	 -1 },
 };
 
 /* layout(s) */
@@ -66,10 +86,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray2, NULL };
 static const char *termcmd[]      = { "st",  NULL };
 static const char *killffmpeg[]   = { "killall", "ffmpeg", NULL };
-static const char *browser[]      = { "brave", NULL };
-static const char *editor[]       = { "vscodium", NULL };
+static const char *browser[]      = { "chromium-browser", NULL };
 static const char *Fmanager[]     = { "st", "-e", "lf", NULL };
-static const char *spotify[]	  = { "/home/binette/.local/bin/spotify.sh", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
@@ -147,12 +165,10 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          	 SHCMD("st -e newsboat") },
 
 	/* Dmenu scripts launched with ALT + CTRL + KEY */
-	{ 0|Mod1Mask|ControlMask,	XK_e,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/configs.sh") },
+	
 
 	/* Screenshot & recoding hotkey */
-	{ 0,                        	XK_Print,  spawn,          	 SHCMD("maim -s | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
-//	{ 0,                        	XK_Print,  spawn,          	 SHCMD("maim | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
-	{ 0|Mod1Mask, 			XK_Print,  spawn,          	 {.v = killffmpeg } },
+
 
 
 };
