@@ -85,7 +85,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray2, NULL };
 static const char *termcmd[]      = { "st",  NULL };
-static const char *killffmpeg[]   = { "killall", "ffmpeg", NULL };
 static const char *browser[]      = { "chromium-browser", NULL };
 static const char *Fmanager[]     = { "st", "-e", "lf", NULL };
 
@@ -159,9 +158,7 @@ static Key keys[] = {
 
 	/* Apps Launched with SUPER + ALT + KEY */
 	{ MODKEY|Mod1Mask,          	XK_b,      spawn,	    	 {.v = browser } },
-	{ MODKEY|Mod1Mask,       	XK_c,      spawn,          	 {.v = editor } },
 	{ MODKEY|Mod1Mask,       	XK_f,      spawn,          	 {.v = Fmanager } },
-	{ MODKEY|Mod1Mask,       	XK_s,      spawn,          	 {.v = spotify } },
 	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          	 SHCMD("st -e newsboat") },
 
 	/* Dmenu scripts launched with ALT + CTRL + KEY */
