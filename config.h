@@ -124,12 +124,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        	 {.i = 0  } },
 
 	/* Stack manipulation */
-	{ MODKEY|ShiftMask,             XK_l,      movestack,      	 {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_h,      movestack,      	 {.i = -1 } },
-	{ MODKEY,                       XK_l,      focusstack,     	 {.i = +1 } },
-	{ MODKEY,                       XK_h,      focusstack,     	 {.i = -1 } },
-	{ MODKEY,                       XK_comma,  setmfact,       	 {.f = -0.05} },
-	{ MODKEY,                       XK_period, setmfact,       	 {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      	 {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      	 {.i = -1 } },
+	{ MODKEY,                       XK_k,      focusstack,     	 {.i = +1 } },
+	{ MODKEY,                       XK_j,      focusstack,     	 {.i = -1 } },
+	{ MODKEY,                       XK_h,      setmfact,       	 {.f = -0.05} },
+	{ MODKEY,                       XK_l,      setmfact,       	 {.f = +0.05} },
 	{ MODKEY,                       XK_x,      incnmaster,     	 {.i = +1 } },
 	{ MODKEY,                       XK_z,      incnmaster,     	 {.i = -1 } },
 
@@ -147,10 +147,10 @@ static Key keys[] = {
 //	{ MODKEY,                       XK_space,  setlayout,      	 {0} },
 
 	/* Switching between monitors */
-	{ MODKEY,                       XK_Left,   focusmon,       	 {.i = -1 } },
-	{ MODKEY,                       XK_Right,  focusmon,       	 {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Left,   tagmon,         	 {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Right,  tagmon,         	 {.i = +1 } },
+	{ MODKEY,                       XK_comma,   focusmon,       	 {.i = -1 } },
+	{ MODKEY,                       XK_period,  focusmon,       	 {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,   tagmon,         	 {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period,  tagmon,         	 {.i = +1 } },
 
 	/* Scratchpads */
 	{ 0|Mod1Mask,            	XK_t,  	   togglescratch,  	 {.ui = 0 } }, // terminal
