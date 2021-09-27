@@ -52,6 +52,7 @@ static const Rule rules[] = {
 	{ "mpv",           NULL,        		NULL,       (1 << 3),         1,         -1 },
 	{ "Spotify",       NULL,        		NULL,       (1 << 4),         0,         -1 },
 	{ "VScodium",      NULL,        		NULL,       1,                0,         -1 },
+	{ "emacs",	   NULL,			NULL,	    1,                0,	 -1 },
 	{ NULL,		   "spterm",    		NULL,	    SPTAG(0),	      1,	 -1 },
 	{ NULL,		   "spfm",	    		NULL,	    SPTAG(1),	      1,	 -1 },
 	{ NULL,		   "sppulsemixer", 	        NULL,	    SPTAG(2),	      1,	 -1 },
