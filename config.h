@@ -28,9 +28,9 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "100x41", "-e", "lf", NULL };
-const char *spcmd3[] = {"st", "-n", "sppulsemixer", "-g", "120x34", "-e", "pulsemixer", NULL };
+const char *spcmd1[] = {"xterm", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = {"xterm", "-n", "spfm", "-g", "100x41", "-e", "lf", NULL };
+const char *spcmd3[] = {"xterm", "-n", "sppulsemixer", "-g", "120x34", "-e", "pulsemixer", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",	 spcmd1},
@@ -85,11 +85,11 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray2, NULL };
-static const char *termcmd[]      = { "st",  NULL };
+static const char *termcmd[]      = { "xterm",  NULL };
 static const char *killffmpeg[]   = { "killall", "ffmpeg", NULL };
 static const char *browser[]      = { "brave", NULL };
 static const char *editor[]       = { "emacs", NULL };
-static const char *Fmanager[]     = { "st", "-e", "lf", NULL };
+static const char *Fmanager[]     = { "xterm", "-e", "lf", NULL };
 static const char *spotify[]	  = { "/home/binette/.local/bin/spotify.sh", NULL };
 
 #include "movestack.c"
@@ -165,7 +165,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,       	XK_c,      spawn,          	 {.v = editor } },
 	{ MODKEY|Mod1Mask,       	XK_f,      spawn,          	 {.v = Fmanager } },
 	{ MODKEY|Mod1Mask,       	XK_s,      spawn,          	 {.v = spotify } },
-	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          	 SHCMD("st -e newsboat") },
+	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          	 SHCMD("xterm -e newsboat") },
 
 	/* Dmenu scripts launched with ALT + CTRL + KEY */
 	{ 0|Mod1Mask|ControlMask,	XK_e,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/configs.sh") },
