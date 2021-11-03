@@ -1,5 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Constants */
+#define TERMINAL "xterm"
+#define TERMCLASS "xterm"
+
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
@@ -88,9 +92,8 @@ static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenuf
 static const char *termcmd[]      = { "xterm",  NULL };
 static const char *killffmpeg[]   = { "killall", "ffmpeg", NULL };
 static const char *browser[]      = { "brave", NULL };
-static const char *editor[]       = { "emacs", NULL };
 static const char *Fmanager[]     = { "xterm", "-e", "lf", NULL };
-static const char *spotify[]	  = { "/home/binette/.local/bin/spotify.sh", NULL };
+static const char *spotify[]	  = { "spotify", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
@@ -117,7 +120,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,      	   	 {.v = termcmd } },
 	{ MODKEY,             		XK_q,      killclient,     	 {0} },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           	 {0} },
-	{ MODKEY|ControlMask,		XK_q,	   spawn,          	 SHCMD("slock") },
+	{ MODKEY|ControlMask,		XK_q,	   spawn,          	 SHCMD("sysact") },
 	{ MODKEY,                       XK_b,      togglebar,      	 {0} },
 
 	/* Gaps */
@@ -163,16 +166,16 @@ static Key keys[] = {
 
 	/* Apps Launched with SUPER + ALT + KEY */
 	{ MODKEY|Mod1Mask,          	XK_b,      spawn,	    	 {.v = browser } },
-	{ MODKEY|Mod1Mask,       	XK_c,      spawn,          	 {.v = editor } },
 	{ MODKEY|Mod1Mask,       	XK_f,      spawn,          	 {.v = Fmanager } },
 	{ MODKEY|Mod1Mask,       	XK_s,      spawn,          	 {.v = spotify } },
-	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          	 SHCMD("xterm -e newsboat") },
+	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          	 SHCMD( TERMINAL "-e newsboat") },
 
 	/* Dmenu scripts launched with ALT + CTRL + KEY */
 	{ 0|Mod1Mask|ControlMask,	XK_e,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/configs.sh") },
 
 	/* Screenshot & recoding hotkey */
 	{ 0,                        	XK_Print,  spawn,          	 SHCMD("maim -s | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
+	{ ShiftMask,                        	XK_Print,  spawn,          	 SHCMD("maimpick") },
 //	{ 0,                        	XK_Print,  spawn,          	 SHCMD("maim | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
 	{ 0|Mod1Mask, 			XK_Print,  spawn,          	 {.v = killffmpeg } },
 	
