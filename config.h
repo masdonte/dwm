@@ -94,6 +94,7 @@ static const char *spotify[]	  = { "/home/binette/.local/bin/spotify.sh", NULL }
 
 #include "movestack.c"
 #include "shiftview.c"
+#include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
        
