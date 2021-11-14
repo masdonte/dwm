@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "xterm"
-#define TERMCLASS "xterm"
+#define TERMINAL "st"
+#define TERMCLASS "st"
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -21,20 +21,20 @@ static const char *colors[][3]      = {
 	/*                      fg         bg          border    */
 	[SchemeNorm]      =   { col_cyan,  col_gray1,  col_gray2 },
 	[SchemeSel]       =   { col_cyan,  col_gray2,  col_gray3 },
-	[SchemeStatus]    =   { col_gray4, col_gray1,  "#000000" }, // Statusbar right 
-	[SchemeTagsSel]   =   { col_gray4, col_gray2,  "#000000" }, // Tagbar left selected 
-	[SchemeTagsNorm]  =   { col_gray4, col_gray1,  "#000000" }, // Tagbar left unselected 
-        [SchemeInfoSel]   =   { col_gray4, col_gray1,  "#000000" }, // infobar middle selected 
-        [SchemeInfoNorm]  =   { col_gray4, col_gray1,  "#000000" }, // infobar middle unselected 
+	[SchemeStatus]    =   { col_gray4, col_gray1,  "#000000" }, // Statusbar right
+	[SchemeTagsSel]   =   { col_gray4, col_gray2,  "#000000" }, // Tagbar left selected
+	[SchemeTagsNorm]  =   { col_gray4, col_gray1,  "#000000" }, // Tagbar left unselected
+        [SchemeInfoSel]   =   { col_gray4, col_gray1,  "#000000" }, // infobar middle selected
+        [SchemeInfoNorm]  =   { col_gray4, col_gray1,  "#000000" }, // infobar middle unselected
 };
 
 typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"xterm", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"xterm", "-n", "spfm", "-g", "100x41", "-e", "lf", NULL };
-const char *spcmd3[] = {"xterm", "-n", "sppulsemixer", "-g", "120x34", "-e", "pulsemixer", NULL };
+const char *spcmd1[] = { TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = { TERMINAL, "-n", "spfm", "-g", "100x41", "-e", "lf", NULL };
+const char *spcmd3[] = { TERMINAL, "-n", "sppulsemixer", "-g", "120x34", "-e", "pulsemixer", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",	 spcmd1},
@@ -49,14 +49,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
+	/* class           instance                     title       tags mask     isfloating   monitor */
 	{ "Brave",         NULL,        		NULL,       (1 << 1),         0,         -1 },
-	{ "Ripcord",  	   NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "discord",  	   NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "mpv",           NULL,        		NULL,       (1 << 3),         1,         -1 },
-	{ "Spotify",       NULL,        		NULL,       (1 << 4),         0,         -1 },
-	{ "VScodium",      NULL,        		NULL,       1,                0,         -1 },
-	{ "emacs",	   NULL,			NULL,	    1,                0,	 -1 },
+	{ "spotify",       NULL,        		NULL,       (1 << 4),         0,         -1 },
 	{ NULL,		   "spterm",    		NULL,	    SPTAG(0),	      1,	 -1 },
 	{ NULL,		   "spfm",	    		NULL,	    SPTAG(1),	      1,	 -1 },
 	{ NULL,		   "sppulsemixer", 	        NULL,	    SPTAG(2),	      1,	 -1 },
@@ -89,46 +86,41 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray2, NULL };
-static const char *termcmd[]      = { "xterm",  NULL };
-static const char *killffmpeg[]   = { "killall", "ffmpeg", NULL };
+static const char *termcmd[]      = { TERMINAL,  NULL };
 static const char *browser[]      = { "brave", NULL };
-static const char *Fmanager[]     = { "xterm", "-e", "lf", NULL };
-static const char *spotify[]	  = { "spotify", NULL };
+static const char *Fmanager[]     = { TERMINAL, "-e", "lf", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-       
-	/* Tags */
+
+	  /* Tags */
 	TAGKEYS(                       	XK_1,                      	 0)
 	TAGKEYS(                        XK_2,                      	 1)
 	TAGKEYS(                        XK_3,                      	 2)
 	TAGKEYS(                        XK_4,                      	 3)
 	TAGKEYS(                        XK_5,                      	 4)
 	TAGKEYS(                        XK_6,                      	 5)
-//	TAGKEYS(                        XK_7,                      	 6)
-//	TAGKEYS(                        XK_8,                      	 7)
-//	TAGKEYS(                        XK_9,                      	 8)
+	/*TAGKEYS(                      XK_7,                      	 6)*/
+	/*TAGKEYS(                      XK_8,                      	 7)*/
+	/*TAGKEYS(                      XK_9,                      	 8)*/
 	{ MODKEY,                       XK_0,      view,           	 {.ui = ~0 } },
 	{ MODKEY,			XK_grave,  shiftview,	   	 { .i = +1 } },
 	{ MODKEY,			XK_Tab,	   shiftview,	   	 { .i = -1 } },
-		
-	/* Important bind */
-	{ MODKEY,                       XK_d,      spawn,          	 {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,      	   	 {.v = termcmd } },
+
+	  /* Important bind */
 	{ MODKEY,             		XK_q,      killclient,     	 {0} },
-	{ MODKEY|ShiftMask,             XK_q,      quit,           	 {0} },
-	{ MODKEY|ControlMask,		XK_q,	   spawn,          	 SHCMD("sysact") },
+	/*{ MODKEY|ShiftMask,           XK_q,      quit,           	 {0} },*/
 	{ MODKEY,                       XK_b,      togglebar,      	 {0} },
 
-	/* Gaps */
+	  /* Gaps */
 	{ MODKEY,                       XK_minus,  setgaps,        	 {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        	 {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        	 {.i = 0  } },
 
-	/* Stack manipulation */
+	  /* Stack manipulation */
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      	 {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      	 {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     	 {.i = +1 } },
@@ -138,57 +130,62 @@ static Key keys[] = {
 	{ MODKEY,                       XK_x,      incnmaster,     	 {.i = +1 } },
 	{ MODKEY,                       XK_z,      incnmaster,     	 {.i = -1 } },
 
-	/* Layout manipulation */
+	  /* Layout manipulation */
 	{ MODKEY,                       XK_space,  zoom,           	 {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, 	 {0} },
 	{ MODKEY,                       XK_f,      togglefullscreen, 	 {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefakefullscreen, {0} },
-//	{ MODKEY,                       XK_Tab,    view,           	 {0} },
-//	{ MODKEY|ShiftMask,             XK_0,      tag,            	 {.ui = ~0 } },
+	/*{ MODKEY,                       XK_Tab,    view,           	 {0} },*/
+	/*{ MODKEY|ShiftMask,             XK_0,      tag,            	 {.ui = ~0 } },*/
 
-	/* Switch to specific layouts */
+	  /* Switch to specific layouts */
 
 	{ MODKEY,                       XK_t,      setlayout,      	 {.v = &layouts[0]} },
-//	{ MODKEY,                       XK_space,  setlayout,      	 {0} },
+	/*{ MODKEY,                       XK_space,  setlayout,      	 {0} },*/
 
-	/* Switching between monitors */
+	  /* Switching between monitors */
 	{ MODKEY,                       XK_comma,   focusmon,       	 {.i = -1 } },
 	{ MODKEY,                       XK_period,  focusmon,       	 {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,   tagmon,         	 {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,  tagmon,         	 {.i = +1 } },
 
-	/* Scratchpads */
+	  /* Scratchpads */
 	{ 0|Mod1Mask,            	XK_t,  	   togglescratch,  	 {.ui = 0 } }, // terminal
 	{ 0|Mod1Mask,            	XK_f,	   togglescratch,  	 {.ui = 1 } }, // file manager
 	{ 0|Mod1Mask,            	XK_p,	   togglescratch,  	 {.ui = 2 } }, // sound mixer
 
-	/* Apps Launched with SUPER + KEY */
+	  /* Apps Launched with SUPER + KEY */
+	{ MODKEY,                       XK_d,      spawn,          	 {.v = dmenucmd } },
+	{ MODKEY,                       XK_Return, spawn,      	   	 {.v = termcmd } },
 
-	/* Apps Launched with SUPER + ALT + KEY */
+	  /* Apps Launched with SUPER + ALT + KEY */
 	{ MODKEY|Mod1Mask,          	XK_b,      spawn,	    	 {.v = browser } },
 	{ MODKEY|Mod1Mask,       	XK_f,      spawn,          	 {.v = Fmanager } },
-	{ MODKEY|Mod1Mask,       	XK_s,      spawn,          	 {.v = spotify } },
-	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          	 SHCMD( TERMINAL "-e newsboat") },
+	{ MODKEY|Mod1Mask,       	XK_s,      spawn,          	 SHCMD("spotify") },
+	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          	 SHCMD(TERMINAL "-e newsboat") },
 
-	/* Dmenu scripts launched with ALT + CTRL + KEY */
-	{ 0|Mod1Mask|ControlMask,	XK_e,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/configs.sh") },
+	  /* Dmenu scripts launched with ALT + CTRL + KEY */
+	{ 0|Mod1Mask|ControlMask,	XK_e,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/configs") },
+	{ 0|Mod1Mask|ControlMask,	XK_Print,  spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/record") },
+	{ 0|ShiftMask,                  XK_Print,  spawn,          	 SHCMD("$HOME/.local/bin/dmenu/maimpick") },
+	{ MODKEY|ShiftMask,		XK_q,	   spawn,          	 SHCMD("$HOME/.local/bin/dmenu/sysact") },
+	{ 0|Mod1Mask|ControlMask,	XK_p,	   spawn,	   	 SHCMD("passmenu") },
+	/*{ 0|Mod1Mask|ControlMask,	XK_?,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/") },*/
+	/*{ 0|Mod1Mask|ControlMask,	XK_?,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/") },*/
 
-	/* Screenshot & recoding hotkey */
-	{ 0,                        	XK_Print,  spawn,          	 SHCMD("maim -s | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
-	{ ShiftMask,                        	XK_Print,  spawn,          	 SHCMD("maimpick") },
-//	{ 0,                        	XK_Print,  spawn,          	 SHCMD("maim | xclip -selection clipboard -t image/png && notify-send 'MAIM' 'Screenshot saved in clipboard'") },
-	{ 0|Mod1Mask, 			XK_Print,  spawn,          	 {.v = killffmpeg } },
-	
-	/* multimedia keys */
+	  /* Screenshot & recoding hotkey */
+	/*{ 0|Mod1Mask, 		XK_Print,  spawn,		 {.v = killffmpeg } },*/
+	/*{ 0,                        	XK_Print,  spawn,          	 SHCMD("screenshot") },*/
+
+	  /* multimedia keys */
 	{ 0, XF86XK_AudioMute,   	spawn,		SHCMD("pamixer -t") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --allow-boost -i 3") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --allow-boost -d 3") },
 	{ 0, XF86XK_AudioMicMute,	spawn,		SHCMD("pamixer --source 45 -t") },
-	{ 0, XF86XK_PowerOff,		spawn,		SHCMD("sysact") },
-	//{ 0, XF86XK_ScreenSaver,	spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
-	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
-	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("doas light -A 15") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("doas light -U 15") },
 
+          /* unused keys */
 
 };
 
