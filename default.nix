@@ -13,7 +13,7 @@ stdenv.mkDerivation {
   '';
 
   meta = with stdenv.lib; {
-    description = "Simple Terminal";
+    description = "Dynamic window manager that suck less";
     homepage = https://dwm.suckless.org/;
     license = licenses.mit;
     platforms = platforms.all;
