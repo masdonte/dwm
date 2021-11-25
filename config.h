@@ -12,15 +12,15 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "CascadiaMono:size=11" };
 static const char dmenufont[]       = "CascadiaMono=11";
-static const char col_gray1[]       = "#181818";
+static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#8f423c";
 static const char col_gray3[]       = "#5a7260";
 static const char col_gray4[]       = "#ffffff";
 static const char col_cyan[]        = "#ffffff";
 static const char *colors[][3]      = {
 	/*                      fg         bg          border    */
-	[SchemeNorm]      =   { col_cyan,  col_gray1,  col_gray2 },
-	[SchemeSel]       =   { col_cyan,  col_gray2,  col_gray3 },
+	[SchemeNorm]      =   { col_gray4,  col_gray1,  col_gray2 },
+	[SchemeSel]       =   { col_gray4,  col_gray2,  col_gray3 },
 	[SchemeStatus]    =   { col_gray4, col_gray1,  "#000000" }, // Statusbar right
 	[SchemeTagsSel]   =   { col_gray4, col_gray2,  "#000000" }, // Tagbar left selected
 	[SchemeTagsNorm]  =   { col_gray4, col_gray1,  "#000000" }, // Tagbar left unselected
@@ -43,7 +43,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -85,7 +85,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray2, NULL };
+static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]      = { TERMINAL,  NULL };
 static const char *browser[]      = { "brave", NULL };
 static const char *Fmanager[]     = { TERMINAL, "-e", "lf", NULL };
@@ -170,6 +170,8 @@ static Key keys[] = {
 	{ 0|ShiftMask,                  XK_Print,  spawn,          	 SHCMD("$HOME/.local/bin/dmenu/maimpick") },
 	{ MODKEY|ShiftMask,		XK_q,	   spawn,          	 SHCMD("$HOME/.local/bin/dmenu/sysact") },
 	{ 0|Mod1Mask|ControlMask,	XK_p,	   spawn,	   	 SHCMD("passmenu") },
+	{ 0|Mod1Mask|ControlMask,	XK_c,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/clipboard") },
+	{ 0,				XK_Menu,   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/clipboard") },
 	/*{ 0|Mod1Mask|ControlMask,	XK_?,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/") },*/
 	/*{ 0|Mod1Mask|ControlMask,	XK_?,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/") },*/
 
