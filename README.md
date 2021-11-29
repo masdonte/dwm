@@ -24,7 +24,7 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 + dmenu
 + slstatus (status bar)
 + awesome font or change the tags icon in the `config.h` file at line 46:
-```
+``` C
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 ```
@@ -55,7 +55,7 @@ Clone this repo `git clone https://github.com/Binetto/dwm.git`, edit the `config
 Everytime you edit the config file, you need to recompile `sudo make clean install`.
 
 On Nixos, add this to your configuration file:
-```
+``` nix
 nixpkgs.config = {
   allowUnfree = true;
   packageOverrides = pkgs: rec {
