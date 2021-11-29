@@ -1,6 +1,6 @@
 # Binette's build of dwm
 
-Dwm is an extremely fast, small, and dynamic window manager. This is my build of dwm with only a few patches, feel free to visit the suckless website and add the patches you want (rename the `config.h` to `config.def.h` before applying a patch). 
+Dwm is an extremely fast, small, and dynamic window manager. This is my build of dwm with only a few patches, feel free to visit the suckless website and add the patches you want (rename the `config.h` to `config.def.h` before applying a patch).
 
 ![Screenshot of my desktop](https://raw.githubusercontent.com/Binetto/dwm/master/screenshot.png)
 
@@ -11,6 +11,7 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 + cursorwarp (cursor will be on the focus client)
 + fullgaps (add gaps)
 + [fullscreen-compilation](https://github.com/paniash/dwm/blob/master/patches/dwm-fullscreen-compilation-6.2.diff) (i added a line to fix fakefullscreen issues with chromium based browser. Thanks to [bakkeby](https://github.com/bakkeby))
++ [hide-vacant-tags](https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.2.diff) (prevents dwm from drawing tags with no clients on the bar)
 + movestack (move client in the stack)
 + noborder (no border and no gaps when there's only one client)
 + pertag (keep the layout per tag instead of per monitor)
@@ -22,11 +23,10 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 + st
 + dmenu
 + slstatus (status bar)
-+ libxft-bgra (this package is necessary for colored emoji)
-+ awesome font or change the tags icon in the `config.h` file at line 41:
-``` 
++ awesome font or change the tags icon in the `config.h` file at line 46:
+```
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; 
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 ```
 
 ## Keybinding
@@ -37,10 +37,10 @@ The MODKEY is set to the Super key (aka the Windows key).
 | `MODKEY + RETURN` | opens terminal |
 | `ALT + t` | opens terminal in scratchpad |
 | `MODKEY + d` | opens dmenu |
-| `MODKEY + Q` | closes focused window |
+| `MODKEY + q` | closes focused window |
 | `MODKEY + SHIFT + q` | quits dwm |
-| `MODKEY + 1-7` | switch focus to workspace |
-| `MODKEY + SHIFT + 1-7` | send focused window to workspace |
+| `MODKEY + 1-6` | switch focus to workspace |
+| `MODKEY + SHIFT + 1-6` | send focused window to workspace |
 | `MODKEY + l` | switches focus between windows in the stack |
 | `MODKEY + h` | switches focus between windows in the stack |
 | `MODKEY + SHIFT + l` | rotates the windows in the stack |
