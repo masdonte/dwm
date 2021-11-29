@@ -11,7 +11,7 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 + cursorwarp (cursor will be on the focus client)
 + fullgaps (add gaps)
 + [fullscreen-compilation](https://github.com/paniash/dwm/blob/master/patches/dwm-fullscreen-compilation-6.2.diff) (i added a line to fix fakefullscreen issues with chromium based browser. Thanks to [bakkeby](https://github.com/bakkeby))
-+ [hide-vacant-tags](https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.2.diff) (prevents dwm from drawing tags with no clients on the bar)
++ hide-vacant-tags (prevents dwm from drawing tags with no clients on the bar)
 + movestack (move client in the stack)
 + noborder (no border and no gaps when there's only one client)
 + pertag (keep the layout per tag instead of per monitor)
