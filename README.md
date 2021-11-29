@@ -54,7 +54,7 @@ The MODKEY is set to the Super key (aka the Windows key).
 Clone this repo `git clone https://github.com/Binetto/dwm.git`, edit the `config.h` file and run `sudo make install`.
 Everytime you edit the config file, you need to recompile `sudo make clean install`.
 
-On Nixos, add this to your configuration file:
+On Nixos, add this to your configuration.nix file:
 ``` nix
 nixpkgs.config = {
   allowUnfree = true;
