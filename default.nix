@@ -1,4 +1,5 @@
-{ stdenv, fetchurl, libX11, libXft, libXinerama }:
+{ stdenv, lib, fetchurl, libX11, libXft, libXinerama }:
+with lib;
 
 stdenv.mkDerivation {
   name = "dwm-head";
@@ -12,7 +13,7 @@ stdenv.mkDerivation {
     substituteInPlace config.mk --replace '/usr/local' $out
   '';
 
-  meta = with stdenv.lib; {
+  meta = {
     description = "Dynamic window manager that suck less";
     homepage = https://dwm.suckless.org/;
     license = licenses.mit;
