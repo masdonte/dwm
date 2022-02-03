@@ -43,7 +43,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -85,8 +85,11 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *termcmd[] = { TERMINAL,  NULL };
-static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, NULL };
+static const char *termcmd[]  = { TERMINAL,  NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
+static const char *browser[]      = { "brave", NULL };
+static const char *Fmanager[]     = { TERMINAL, "-e", "lf", NULL };
+static const char *tmux[]     = { TERMINAL, "-e", "zsh", "-c", "'tmux", "attach", "||", "tmux'", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
@@ -102,7 +105,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_4,                      	 3)
 	TAGKEYS(                        XK_5,                      	 4)
 	TAGKEYS(                        XK_6,                      	 5)
-	/*TAGKEYS(                      XK_7,                      	 6)*/
+	TAGKEYS(                        XK_7,                      	 6)
 	/*TAGKEYS(                      XK_8,                      	 7)*/
 	/*TAGKEYS(                      XK_9,                      	 8)*/
 	{ MODKEY,                       XK_0,      view,           	 {.ui = ~0 } },
@@ -152,6 +155,39 @@ static Key keys[] = {
 	{ 0|Mod1Mask,            	XK_t,  	   togglescratch,  	 {.ui = 0 } }, // terminal
 	{ 0|Mod1Mask,            	XK_f,	   togglescratch,  	 {.ui = 1 } }, // file manager
 	{ 0|Mod1Mask,            	XK_p,	   togglescratch,  	 {.ui = 2 } }, // sound mixer
+
+	  /* Apps Launched with SUPER + KEY */
+	{ MODKEY,                       XK_d,      spawn,          	 {.v = dmenucmd } },
+	{ MODKEY,                       XK_Return, spawn,      	   	 {.v = termcmd } },
+
+	  /* Apps Launched with SUPER + ALT + KEY */
+	{ MODKEY|Mod1Mask,          	XK_b,      spawn,	    	 {.v = browser } },
+	{ MODKEY|Mod1Mask,       	XK_f,      spawn,          	 {.v = Fmanager } },
+	{ MODKEY|Mod1Mask,       	XK_d,      spawn,          	 SHCMD("ripcord") },
+	{ MODKEY|Mod1Mask,       	XK_n,      spawn,          	 SHCMD(TERMINAL "-e newsboat") },
+
+	  /* Apps Launched with SUPER + SHIFT + KEY */
+	{ MODKEY|ShiftMask,       	XK_Return, spawn,          	 {.v = tmux } },
+
+	  /* Dmenu scripts launched with ALT + CTRL + KEY */
+	{ 0|Mod1Mask|ControlMask,	XK_e,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/configs") },
+	{ 0|Mod1Mask|ControlMask,	XK_Print,  spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/record") },
+	{ 0|ShiftMask,                  XK_Print,  spawn,          	 SHCMD("$HOME/.local/bin/dmenu/maimpick") },
+	{ MODKEY|ShiftMask,		XK_q,	   spawn,          	 SHCMD("$HOME/.local/bin/dmenu/sysact") },
+	{ 0|Mod1Mask|ControlMask,	XK_p,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/dmenu-passmenu") },
+	{ 0|Mod1Mask|ControlMask,	XK_c,	   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/clipboard") },
+	{ 0,				XK_Menu,   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/clipboard") },
+
+	  /* multimedia keys */
+	{ 0, XF86XK_AudioMute,   	spawn,		SHCMD("pamixer -t") },
+	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --allow-boost -i 3") },
+	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --allow-boost -d 3") },
+	{ 0, XF86XK_AudioMicMute,	spawn,		SHCMD("pamixer --source 45 -t") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("doas light -A 15") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("doas light -U 15") },
+
+          /* unused keys */
+
 
 };
 
