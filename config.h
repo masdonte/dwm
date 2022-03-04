@@ -179,6 +179,7 @@ static Key keys[] = {
 	{ 0,				XK_Menu,    spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/clipboard") },
 
 	  /* multimedia keys */
+	{ 0, XF86XK_PowerOff,   	            spawn,		 SHCMD("$HOME/.local/bin/dmenu/sysact") },
 	{ 0, XF86XK_AudioMute,   	            spawn,		 SHCMD("pamixer -t") },
 	{ 0, XF86XK_AudioRaiseVolume,	            spawn,		 SHCMD("pamixer --allow-boost -i 5") },
 	{ 0, XF86XK_AudioLowerVolume,	            spawn,		 SHCMD("pamixer --allow-boost -d 5") },
