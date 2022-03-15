@@ -51,6 +51,8 @@ static const Rule rules[] = {
 	 */
 	/* class		instance                title       tags mask     isfloating   monitor */
 	{ "Brave",		NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "chromium-browser",	NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "Firefox",		NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "Discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "mpv",		NULL,			NULL,       (1 << 3),         1,         -1 },
