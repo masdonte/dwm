@@ -10,8 +10,8 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "CascadiaMono:size=11" };
-static const char dmenufont[]       = "CascadiaMono=11";
+static const char *fonts[]          = { "monospace:size=11" };
+static const char dmenufont[]       = "Monospace=11";
 static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#8f423c";
 static const char col_gray3[]       = "#5a7260";
