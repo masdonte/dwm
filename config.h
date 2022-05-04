@@ -10,8 +10,8 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=11" };
-static const char dmenufont[]       = "Monospace=11";
+static const char *fonts[]          = { "monospace:size=10" };
+static const char dmenufont[]       = "Monospace=10";
 static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#8f423c";
 static const char col_gray3[]       = "#5a7260";
@@ -52,7 +52,7 @@ static const Rule rules[] = {
 	/* class		instance                title       tags mask     isfloating   monitor */
 	{ "Brave",		NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "chromium-browser",	NULL,        		NULL,       (1 << 1),         0,         -1 },
-	{ "Firefox",		NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "firefox-default",		NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "Discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "mpv",		NULL,			NULL,       (1 << 3),         1,         -1 },
@@ -89,9 +89,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *termcmd[]  = { TERMINAL,  NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *browser[]  = { "firefox", NULL };
+static const char *browser[]  = { "brave", NULL };
 static const char *Fmanager[] = { "pcmanfm", NULL };
-static const char *tmux[]     = { TERMINAL, "-e", "'tmux", "attach", "||", "tmux'", NULL };
+static const char *tmux[]     = { TERMINAL, "-e", "zsh", "-c", "'tmux", "attach", "||", "tmux'", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
@@ -182,12 +182,13 @@ static Key keys[] = {
 
 	  /* multimedia keys */
 	{ 0, XF86XK_PowerOff,   	            spawn,		 SHCMD("$HOME/.local/bin/dmenu/sysact") },
-	{ 0, XF86XK_AudioMute,   	            spawn,		 SHCMD("pamixer -t") },
-	{ 0, XF86XK_AudioRaiseVolume,	            spawn,		 SHCMD("pamixer --allow-boost -i 5") },
-	{ 0, XF86XK_AudioLowerVolume,	            spawn,		 SHCMD("pamixer --allow-boost -d 5") },
+	{ 0, XF86XK_AudioMute,   	            spawn,		 SHCMD("pamixer -t | dunst-volume") },
+	{ 0, XF86XK_AudioRaiseVolume,	            spawn,		 SHCMD("pamixer -i 5 | dunst-volume") },
+	{ 0, XF86XK_AudioLowerVolume,	            spawn,		 SHCMD("pamixer -d 5 | dunst-volume") },
 	{ 0, XF86XK_AudioMicMute,	            spawn,		 SHCMD("pamixer --source 45 -t") },
 	{ 0, XF86XK_MonBrightnessUp,	            spawn,		 SHCMD("doas light -A 15") },
 	{ 0, XF86XK_MonBrightnessDown,	            spawn,		 SHCMD("doas light -U 15") },
+	{ 0, XF86XK_Display,			    spawn,		 SHCMD("$HOME/.local/bin/dmenu/dmenu-display") },
 
           /* unused keys */
 
