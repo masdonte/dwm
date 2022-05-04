@@ -43,7 +43,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -54,6 +54,7 @@ static const Rule rules[] = {
 	{ "chromium-browser",	NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "firefox-default",		NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
+	{ "Steam",		NULL,        		NULL,       (1 << 4),         0,         -1 },
 	{ "Discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "mpv",		NULL,			NULL,       (1 << 3),         1,         -1 },
 	{ NULL,			"spterm",    		NULL,	    SPTAG(0),	      1,	 -1 },
