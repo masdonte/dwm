@@ -56,10 +56,8 @@ Everytime you edit the config file, you need to recompile `sudo make clean insta
 
 On Nixos, add this to your configuration.nix file:
 ``` nix
-nixpkgs.config = {
-	packageOverrides = pkgs: rec {
-    		dwm-head = callPackage path/to/dwm/folder {};
-  	};
+nixpkgs.config.packageOverrides = pkgs: rec {
+    	dwm-head = callPackage path/to/dwm/folder {};
 };
 
 environment.systemPackages = with pkgs; [
