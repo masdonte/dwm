@@ -51,8 +51,7 @@ static const Rule rules[] = {
 	 */
 	/* class		instance                title       tags mask     isfloating   monitor */
 	{ "Brave",		NULL,        		NULL,       (1 << 1),         0,         -1 },
-	{ "chromium-browser",	NULL,        		NULL,       (1 << 1),         0,         -1 },
-	{ "firefox-default",		NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "librewolf",		NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "Steam",		NULL,        		NULL,       (1 << 4),         0,         -1 },
 	{ "Discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
@@ -90,7 +89,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *termcmd[]  = { TERMINAL,  NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *browser[]  = { "brave", NULL };
+static const char *browser[]  = { "librewolf", NULL };
 static const char *Fmanager[] = { "pcmanfm", NULL };
 static const char *tmux[]     = { TERMINAL, "-e", "zsh", "-c", "'tmux", "attach", "||", "tmux'", NULL };
 
