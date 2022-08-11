@@ -6,27 +6,13 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "Monospace=10";
-static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#8f423c";
-static const char col_gray3[]       = "#5a7260";
-static const char col_gray4[]       = "#ffffff";
-static const char col_cyan[]        = "#ffffff";
-static const char *colors[][3]      = {
-	/*                      fg         bg          border    */
-	[SchemeNorm]      =   { col_gray4,  col_gray1,  col_gray2 },
-	[SchemeSel]       =   { col_gray4,  col_gray2,  col_gray3 },
-	[SchemeStatus]    =   { col_gray4, col_gray1,  "#000000" }, // Statusbar right
-	[SchemeTagsSel]   =   { col_gray4, col_gray2,  "#000000" }, // Tagbar left selected
-	[SchemeTagsNorm]  =   { col_gray4, col_gray1,  "#000000" }, // Tagbar left unselected
-        [SchemeInfoSel]   =   { col_gray4, col_gray1,  "#000000" }, // infobar middle selected
-        [SchemeInfoNorm]  =   { col_gray4, col_gray1,  "#000000" }, // infobar middle unselected
-};
+//#include "themes/jmbi.h"
+#include "themes/gruvbox.h"
+
 
 typedef struct {
 	const char *name;
@@ -37,8 +23,8 @@ const char *spcmd2[] = { TERMINAL, "-n", "spfm", "-g", "100x41", "-e", "lf", NUL
 const char *spcmd3[] = { TERMINAL, "-n", "sppulsemixer", "-g", "120x34", "-e", "pulsemixer", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
-	{"spterm",	 spcmd1},
-	{"splf",	 spcmd2},
+	{"spterm",			 spcmd1},
+	{"splf",				 spcmd2},
 	{"sppulsemixer", spcmd3},
 };
 
@@ -49,16 +35,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class		instance                title       tags mask     isfloating   monitor */
-	{ "Brave",		NULL,        		NULL,       (1 << 1),         0,         -1 },
-	{ "librewolf",		NULL,        		NULL,       (1 << 1),         0,         -1 },
+	/* class				instance        title       tags mask     isfloating   monitor */
+	{ "Brave",			NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "librewolf",	NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
-	{ "Steam",		NULL,        		NULL,       (1 << 4),         0,         -1 },
-	{ "Discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
-	{ "mpv",		NULL,			NULL,       (1 << 3),         1,         -1 },
-	{ NULL,			"spterm",    		NULL,	    SPTAG(0),	      1,	 -1 },
-	{ NULL,			"spfm",	    		NULL,	    SPTAG(1),	      1,	 -1 },
-	{ NULL,			"sppulsemixer",		NULL,	    SPTAG(2),	      1,	 -1 },
+	{ "Steam",		  NULL,        		NULL,       (1 << 4),         0,         -1 },
+	{ "discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
+	{ "mpv",		    NULL,			      NULL,       (1 << 3),         1,         -1 },
+	{ NULL,			    "spterm",    		NULL,	      SPTAG(0),	        1,	       -1 },
+	{ NULL,			    "spfm",	    		NULL,	      SPTAG(1),	        1,	       -1 },
+	{ NULL,			    "sppulsemixer",	NULL,	      SPTAG(2),	        1,	       -1 },
 };
 
 /* layout(s) */
@@ -98,97 +84,98 @@ static const char *tmux[]     = { TERMINAL, "-e", "zsh", "-c", "'tmux", "attach"
 #include <X11/XF86keysym.h>
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
+	/* modifier                     key        function              argument */
 
 	  /* Tags */
-	TAGKEYS(                       	XK_1,                      	 0)
-	TAGKEYS(                        XK_2,                      	 1)
-	TAGKEYS(                        XK_3,                      	 2)
-	TAGKEYS(                        XK_4,                      	 3)
-	TAGKEYS(                        XK_5,                      	 4)
-	TAGKEYS(                        XK_6,                      	 5)
-	TAGKEYS(                        XK_7,                      	 6)
-	/*TAGKEYS(                      XK_8,                      	 7)*/
-	/*TAGKEYS(                      XK_9,                      	 8)*/
-	{ MODKEY,                       XK_0,       view,           	 {.ui = ~0 } },
-	{ MODKEY,			XK_Tab,     shiftview,	   	 { .i = +1 } },
-	{ MODKEY,			XK_grave,   shiftview,	   	 { .i = -1 } },
+	TAGKEYS(                       	XK_1,																0)
+	TAGKEYS(                        XK_2,														  	1)
+	TAGKEYS(                        XK_3,																2)
+	TAGKEYS(                        XK_4,														  	3)
+	TAGKEYS(                        XK_5,													    	4)
+	TAGKEYS(                        XK_6,														  	5)
+	TAGKEYS(                        XK_7,															 	6)
+	/*TAGKEYS(                      XK_8,																7)*/
+	/*TAGKEYS(                      XK_9,																8)*/
+	{ MODKEY,                       XK_0,       view,										{.ui = ~0 } },
+	{ MODKEY,			                  XK_Tab,     shiftview,							{ .i = +1 } },
+	{ MODKEY,			                  XK_grave,   shiftview,							{ .i = -1 } },
 
 	  /* Important bind */
-	{ MODKEY,             		XK_q,       killclient,     	 {0} },
-	/*{ MODKEY|ShiftMask,           XK_q,       quit,           	 {0} },*/
-	{ MODKEY,                       XK_b,       togglebar,      	 {0} },
+	{ MODKEY,             		      XK_q,       killclient,							{0} },
+	/*{ MODKEY|ShiftMask,           XK_q,       quit,										{0} },*/
+	{ MODKEY,                       XK_b,       togglebar,							{0} },
 
 	  /* Gaps */
-	{ MODKEY,                       XK_minus,   setgaps,        	 {.i = -1 } },
-	{ MODKEY,                       XK_equal,   setgaps,        	 {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_equal,   setgaps,        	 {.i = 0  } },
+	{ MODKEY,                       XK_minus,   setgaps,								{.i = -1 } },
+	{ MODKEY,                       XK_equal,   setgaps,								{.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_equal,   setgaps,								{.i = 0  } },
 
 	  /* Stack manipulation */
-	{ MODKEY|ShiftMask,             XK_j,       movestack,      	 {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,       movestack,      	 {.i = -1 } },
-	{ MODKEY,                       XK_j,       focusstack,     	 {.i = +1 } },
-	{ MODKEY,                       XK_k,       focusstack,     	 {.i = -1 } },
-	{ MODKEY,                       XK_h,       setmfact,       	 {.f = -0.05} },
-	{ MODKEY,                       XK_l,       setmfact,       	 {.f = +0.05} },
-	{ MODKEY,                       XK_x,       incnmaster,     	 {.i = +1 } },
-	{ MODKEY,                       XK_z,       incnmaster,     	 {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,       movestack,							{.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,       movestack,							{.i = -1 } },
+	{ MODKEY,                       XK_j,       focusstack,							{.i = +1 } },
+	{ MODKEY,                       XK_k,       focusstack,     	      {.i = -1 } },
+	{ MODKEY,                       XK_h,       setmfact,       	      {.f = -0.05} },
+	{ MODKEY,                       XK_l,       setmfact,       	      {.f = +0.05} },
+	{ MODKEY,                       XK_x,       incnmaster,     	      {.i = +1 } },
+	{ MODKEY,                       XK_z,       incnmaster,     	      {.i = -1 } },
 
 	  /* Layout manipulation */
-	{ MODKEY,                       XK_space,   zoom,           	 {0} },
-	{ MODKEY|ShiftMask,             XK_space,   togglefloating, 	 {0} },
-	{ MODKEY,                       XK_f,       togglefullscreen, 	 {0} },
-	{ MODKEY|ShiftMask,             XK_f,       togglefakefullscreen, {0} },
-	/*{ MODKEY,                     XK_Tab,     view,           	 {0} },*/
-	/*{ MODKEY|ShiftMask,           XK_0,       tag,            	 {.ui = ~0 } },*/
+	{ MODKEY,                       XK_space,   zoom,           	      {0} },
+	{ MODKEY|ShiftMask,             XK_space,   togglefloating, 	      {0} },
+	{ MODKEY,                       XK_f,       togglefullscreen, 	    {0} },
+	{ MODKEY|ShiftMask,             XK_f,       togglefakefullscreen,		{0} },
+	/*{ MODKEY,                     XK_Tab,     view,           	      {0} },*/
+	/*{ MODKEY|ShiftMask,           XK_0,       tag,            	      {.ui = ~0 } },*/
 
 	  /* Switch to specific layouts */
 
-	{ MODKEY,                       XK_t,       setlayout,      	 {.v = &layouts[0]} },
-	/*{ MODKEY,                     XK_space,   setlayout,      	 {0} },*/
+	{ MODKEY,                       XK_t,       setlayout,      	      {.v = &layouts[0]} },
+	/*{ MODKEY,                     XK_space,   setlayout,      	      {0} },*/
 
 	  /* Switching between monitors */
-	{ MODKEY,                       XK_comma,   focusmon,       	 {.i = -1 } },
-	{ MODKEY,                       XK_period,  focusmon,       	 {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,   tagmon,         	 {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period,  tagmon,         	 {.i = +1 } },
+	{ MODKEY,                       XK_comma,   focusmon,								{.i = -1 } },
+	{ MODKEY,                       XK_period,  focusmon,								{.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,   tagmon,									{.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period,  tagmon,									{.i = +1 } },
 
 	  /* Scratchpads */
-	{ 0|Mod1Mask,            	XK_t,  	    togglescratch,  	 {.ui = 0 } }, // terminal
-	{ 0|Mod1Mask,            	XK_f,	    togglescratch,  	 {.ui = 1 } }, // file manager
-	{ 0|Mod1Mask,            	XK_p,	    togglescratch,  	 {.ui = 2 } }, // sound mixer
+	{ 0|Mod1Mask,            	      XK_t,  	    togglescratch,					{.ui = 0 } }, // terminal
+	{ 0|Mod1Mask,            	      XK_f,	      togglescratch,					{.ui = 1 } }, // file manager
+	{ 0|Mod1Mask,            	      XK_p,	      togglescratch,					{.ui = 2 } }, // sound mixer
 
 	  /* Apps Launched with SUPER + KEY */
-	{ MODKEY,                       XK_d,       spawn,          	 {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return,  spawn,      	 {.v = termcmd } },
+	{ MODKEY,                       XK_d,       spawn,									{.v = dmenucmd } },
+	{ MODKEY,                       XK_Return,  spawn,									{.v = termcmd } },
 
 	  /* Apps Launched with SUPER + ALT + KEY */
-	{ MODKEY|Mod1Mask,          	XK_b,       spawn,	    	 {.v = browser } },
-	{ MODKEY|Mod1Mask,       	XK_f,       spawn,          	 {.v = Fmanager } },
-	{ MODKEY|Mod1Mask,       	XK_d,       spawn,          	 SHCMD("ripcord") },
-	{ MODKEY|Mod1Mask,       	XK_n,       spawn,          	 SHCMD(TERMINAL "-e newsboat") },
+	{ MODKEY|Mod1Mask,          	  XK_b,       spawn,									{.v = browser } },
+	{ MODKEY|Mod1Mask,       	      XK_f,       spawn,									{.v = Fmanager } },
+	{ MODKEY|Mod1Mask,       	      XK_r,       spawn,									SHCMD("ripcord") },
+	{ MODKEY|Mod1Mask,       	      XK_d,       spawn,									SHCMD("discordcanary") },
+	{ MODKEY|Mod1Mask,       	      XK_n,       spawn,									SHCMD(TERMINAL "-e newsboat") },
 
 	  /* Apps Launched with SUPER + SHIFT + KEY */
-	{ MODKEY|ShiftMask,       	XK_Return,  spawn,          	 {.v = tmux } },
+	{ MODKEY|ShiftMask,       	    XK_Return,  spawn,          	      {.v = tmux } },
 
 	  /* Dmenu scripts launched with ALT + CTRL + KEY */
-	{ 0|Mod1Mask|ControlMask,	XK_e,	    spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/configs") },
-	{ 0|Mod1Mask|ControlMask,	XK_Print,   spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/record") },
-	{ 0,                            XK_Print,   spawn,          	 SHCMD("$HOME/.local/bin/dmenu/maimpick") },
-	{ MODKEY|ShiftMask,		XK_q,	    spawn,          	 SHCMD("$HOME/.local/bin/dmenu/sysact") },
-	{ 0|Mod1Mask|ControlMask,	XK_p,	    spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/dmenu-passmenu") },
-	{ 0|Mod1Mask|ControlMask,	XK_c,	    spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/clipboard") },
-	{ 0,				XK_Menu,    spawn,	   	 SHCMD("$HOME/.local/bin/dmenu/clipboard") },
+	{ 0|Mod1Mask|ControlMask,	      XK_e,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/configs") },
+	{ 0|Mod1Mask|ControlMask,	      XK_Print,   spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/record") },
+	{ 0,                            XK_Print,   spawn,               	  SHCMD("$HOME/.local/bin/dmenu/maimpick") },
+	{ MODKEY|ShiftMask,		          XK_q,	      spawn,          	      SHCMD("$HOME/.local/bin/dmenu/sysact") },
+	{ 0|Mod1Mask|ControlMask,	      XK_p,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/dmenu-passmenu") },
+	{ 0|Mod1Mask|ControlMask,	      XK_c,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/clipboard") },
+	{ 0,				                    XK_Menu,    spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/clipboard") },
 
 	  /* multimedia keys */
-	{ 0, XF86XK_PowerOff,   	            spawn,		 SHCMD("$HOME/.local/bin/dmenu/sysact") },
-	{ 0, XF86XK_AudioMute,   	            spawn,		 SHCMD("pamixer -t | dunst-volume") },
-	{ 0, XF86XK_AudioRaiseVolume,	            spawn,		 SHCMD("pamixer -i 5 | dunst-volume") },
-	{ 0, XF86XK_AudioLowerVolume,	            spawn,		 SHCMD("pamixer -d 5 | dunst-volume") },
-	{ 0, XF86XK_AudioMicMute,	            spawn,		 SHCMD("pamixer --source 45 -t") },
-	{ 0, XF86XK_MonBrightnessUp,	            spawn,		 SHCMD("doas light -A 15") },
-	{ 0, XF86XK_MonBrightnessDown,	            spawn,		 SHCMD("doas light -U 15") },
-	{ 0, XF86XK_Display,			    spawn,		 SHCMD("$HOME/.local/bin/dmenu/dmenu-display") },
+	{ 0, XF86XK_PowerOff,   	                  spawn,		              SHCMD("$HOME/.local/bin/dmenu/sysact") },
+	{ 0, XF86XK_AudioMute,   	                  spawn,		              SHCMD("pamixer -t | dunst-volume") },
+	{ 0, XF86XK_AudioRaiseVolume,	              spawn,		              SHCMD("pamixer -i 5 | dunst-volume") },
+	{ 0, XF86XK_AudioLowerVolume,	              spawn,		              SHCMD("pamixer -d 5 | dunst-volume") },
+	{ 0, XF86XK_AudioMicMute,	                  spawn,		              SHCMD("pamixer --source 45 -t") },
+	{ 0, XF86XK_MonBrightnessUp,	              spawn,		              SHCMD("doas light -A 15") },
+	{ 0, XF86XK_MonBrightnessDown,	            spawn,		              SHCMD("doas light -U 15") },
+	{ 0, XF86XK_Display,			                  spawn,		              SHCMD("$HOME/.local/bin/dmenu/dmenu-display") },
 
           /* unused keys */
 
