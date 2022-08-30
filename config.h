@@ -41,7 +41,7 @@ static const Rule rules[] = {
 	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "Steam",		  NULL,        		NULL,       (1 << 4),         0,         -1 },
 	{ "discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
-	{ "mpv",		    NULL,			      NULL,       (1 << 3),         1,         -1 },
+	{ "mpv",		    NULL,			      NULL,       0,         1,         -1 },
 	{ NULL,			    "spterm",    		NULL,	      SPTAG(0),	        1,	       -1 },
 	{ NULL,			    "spfm",	    		NULL,	      SPTAG(1),	        1,	       -1 },
 	{ NULL,			    "sppulsemixer",	NULL,	      SPTAG(2),	        1,	       -1 },

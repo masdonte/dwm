@@ -12,6 +12,6 @@ static const char *colors[][3]      = {
 	[SchemeStatus]    =   { col_gray4, col_gray1,  "#000000" }, // Statusbar right
 	[SchemeTagsSel]   =   { col_gray4, col_gray2,  "#000000" }, // Tagbar left selected
 	[SchemeTagsNorm]  =   { col_gray4, col_gray1,  "#000000" }, // Tagbar left unselected
-        [SchemeInfoSel]   =   { col_gray4, col_gray1,  "#000000" }, // infobar middle selected
-        [SchemeInfoNorm]  =   { col_gray4, col_gray1,  "#000000" }, // infobar middle unselected
+  [SchemeInfoSel]   =   { col_gray4, col_gray1,  "#000000" }, // infobar middle selected
+  [SchemeInfoNorm]  =   { col_gray4, col_gray1,  "#000000" }, // infobar middle unselected
 };
