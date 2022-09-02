@@ -1,5 +1,3 @@
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "Monospace=10";
 static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#8f423c";
 static const char col_gray3[]       = "#5a7260";
