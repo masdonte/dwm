@@ -1,5 +1,3 @@
-static const char *fonts[]          = { "sans-serif:size=12", "materialdesignicons-webfont:size=15" };
-static const char dmenufont[]       = "sans-serif=12";
 static const char col_gray1[]       = "#282828";
 static const char col_gray2[]       = "#458588";
 static const char col_gray3[]       = "#689d6a";
