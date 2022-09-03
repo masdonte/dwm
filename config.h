@@ -81,7 +81,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *browser[]  = { "librewolf", NULL };
 static const char *Fmanager[] = { "pcmanfm", NULL };
 static const char *tmux[]     = { TERMINAL, "-e", "'tmux", "attach", "||", "tmux'", NULL };
-static const char *screenshot[]     = { "flameshot", "gui", "--raw", "|", "xclip", "-sel", "clip", "-t", "image/png", NULL };
+static const char *screenshot[]     = { "flameshot", "gui", "--raw", "||", "xclip", "-sel", "clip", "-t", "image/png", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
