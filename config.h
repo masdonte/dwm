@@ -81,6 +81,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *browser[]  = { "librewolf", NULL };
 static const char *Fmanager[] = { "pcmanfm", NULL };
 static const char *tmux[]     = { TERMINAL, "-e", "'tmux", "attach", "||", "tmux'", NULL };
+static const char *flameshot[]     = { "flameshot", "gui", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
@@ -169,6 +170,7 @@ static Key keys[] = {
 	{ 0|Mod1Mask|ControlMask,	      XK_p,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/dmenu-passmenu") },
 	{ 0|Mod1Mask|ControlMask,	      XK_c,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/clipboard") },
 	{ 0,				                    XK_Menu,    spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/clipboard") },
+	{ 0|Mod1Mask|ControlMask,	      XK_f,	      spawn,	   	            {.v = flameshot } },
 
 	  /* multimedia keys */
 	{ 0, XF86XK_PowerOff,   	                  spawn,		              SHCMD("$HOME/.local/bin/dmenu/sysact") },
