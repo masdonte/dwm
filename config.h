@@ -10,6 +10,8 @@ static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const char *fonts[]          = { "sans-serif:size=12", "materialdesignicons-webfont:size=12" };
+static const char dmenufont[]       = "sans-serif=12";
 //#include "themes/jmbi.h"
 #include "themes/gruvbox.h"
 
@@ -29,7 +31,8 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "" };
+//static const char *tags[] = { "", "", "", "", "", "", "" };
+static const char *tags[] = { "󰗀", "󰇧", "󰚇", "󰕧", "󰊗", "󰒍", "󰛑" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -41,7 +44,7 @@ static const Rule rules[] = {
 	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "Steam",		  NULL,        		NULL,       (1 << 4),         0,         -1 },
 	{ "discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
-	{ "mpv",		    NULL,			      NULL,       (1 << 3),         1,         -1 },
+	{ "mpv",		    NULL,			      NULL,       0,         1,         -1 },
 	{ NULL,			    "spterm",    		NULL,	      SPTAG(0),	        1,	       -1 },
 	{ NULL,			    "spfm",	    		NULL,	      SPTAG(1),	        1,	       -1 },
 	{ NULL,			    "sppulsemixer",	NULL,	      SPTAG(2),	        1,	       -1 },
@@ -77,7 +80,8 @@ static const char *termcmd[]  = { TERMINAL,  NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *browser[]  = { "librewolf", NULL };
 static const char *Fmanager[] = { "pcmanfm", NULL };
-static const char *tmux[]     = { TERMINAL, "-e", "zsh", "-c", "'tmux", "attach", "||", "tmux'", NULL };
+static const char *tmux[]     = { TERMINAL, "-e", "'tmux", "attach", "||", "tmux'", NULL };
+static const char *flameshot[]     = { "flameshot", "gui", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
@@ -166,6 +170,7 @@ static Key keys[] = {
 	{ 0|Mod1Mask|ControlMask,	      XK_p,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/dmenu-passmenu") },
 	{ 0|Mod1Mask|ControlMask,	      XK_c,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/clipboard") },
 	{ 0,				                    XK_Menu,    spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/clipboard") },
+	{ 0|Mod1Mask|ControlMask,	      XK_f,	      spawn,	   	            {.v = flameshot } },
 
 	  /* multimedia keys */
 	{ 0, XF86XK_PowerOff,   	                  spawn,		              SHCMD("$HOME/.local/bin/dmenu/sysact") },
