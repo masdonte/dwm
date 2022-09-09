@@ -44,7 +44,8 @@ static const Rule rules[] = {
 	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "Steam",		  NULL,        		NULL,       (1 << 4),         0,         -1 },
 	{ "discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
-	{ "mpv",		    NULL,			      NULL,       0,         1,         -1 },
+	{ "mpv",		    NULL,			      NULL,       0,                1,         -1 },
+	{ "tidal-hifi",	NULL,			      NULL,       (1 << 3),         0,         -1 },
 	{ NULL,			    "spterm",    		NULL,	      SPTAG(0),	        1,	       -1 },
 	{ NULL,			    "spfm",	    		NULL,	      SPTAG(1),	        1,	       -1 },
 	{ NULL,			    "sppulsemixer",	NULL,	      SPTAG(2),	        1,	       -1 },
@@ -155,7 +156,6 @@ static Key keys[] = {
 	  /* Apps Launched with SUPER + ALT + KEY */
 	{ MODKEY|Mod1Mask,          	  XK_b,       spawn,									{.v = browser } },
 	{ MODKEY|Mod1Mask,       	      XK_f,       spawn,									{.v = Fmanager } },
-	{ MODKEY|Mod1Mask,       	      XK_r,       spawn,									SHCMD("ripcord") },
 	{ MODKEY|Mod1Mask,       	      XK_d,       spawn,									SHCMD("discordcanary") },
 	{ MODKEY|Mod1Mask,       	      XK_n,       spawn,									SHCMD(TERMINAL "-e newsboat") },
 
