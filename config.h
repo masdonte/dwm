@@ -131,7 +131,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,       togglefullscreen, 	    {0} },
 	{ MODKEY|ShiftMask,             XK_f,       togglefakefullscreen,		{0} },
 	/*{ MODKEY,                     XK_Tab,     view,           	      {0} },*/
-	/*{ MODKEY|ShiftMask,           XK_0,       tag,            	      {.ui = ~0 } },*/
+	{ MODKEY|ShiftMask,           XK_0,       tag,            	      {.ui = ~0 } },
 
 	  /* Switch to specific layouts */
 
