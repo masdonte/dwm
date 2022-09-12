@@ -154,37 +154,30 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return,  spawn,									{.v = termcmd } },
 
 	  /* Apps Launched with SUPER + ALT + KEY */
-	{ MODKEY|Mod1Mask,          	  XK_b,       spawn,									{.v = browser } },
-	{ MODKEY|Mod1Mask,       	      XK_f,       spawn,									{.v = Fmanager } },
-	{ MODKEY|Mod1Mask,       	      XK_d,       spawn,									SHCMD("discordcanary") },
-	{ MODKEY|Mod1Mask,       	      XK_n,       spawn,									SHCMD(TERMINAL "-e newsboat") },
+//	{ MODKEY|Mod1Mask,          	  XK_b,       spawn,									{.v = browser } },
+//	{ MODKEY|Mod1Mask,       	      XK_f,       spawn,									{.v = Fmanager } },
+//	{ MODKEY|Mod1Mask,       	      XK_d,       spawn,									SHCMD("discordcanary") },
+//	{ MODKEY|Mod1Mask,       	      XK_n,       spawn,									SHCMD(TERMINAL "-e newsboat") },
 
 	  /* Apps Launched with SUPER + SHIFT + KEY */
-	{ MODKEY|ShiftMask,       	    XK_Return,  spawn,          	      {.v = tmux } },
+//	{ MODKEY|ShiftMask,       	    XK_Return,  spawn,          	      {.v = tmux } },
 
 	  /* Dmenu scripts launched with ALT + CTRL + KEY */
-	{ 0|Mod1Mask|ControlMask,	      XK_e,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/configs") },
-	{ 0|Mod1Mask|ControlMask,	      XK_Print,   spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/record") },
-	{ 0,                            XK_Print,   spawn,               	  SHCMD("$HOME/.local/bin/dmenu/maimpick") },
-	{ MODKEY|ShiftMask,		          XK_q,	      spawn,          	      SHCMD("$HOME/.local/bin/dmenu/sysact") },
-	{ 0|Mod1Mask|ControlMask,	      XK_p,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/dmenu-passmenu") },
-	{ 0|Mod1Mask|ControlMask,	      XK_c,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/clipboard") },
-	{ 0,				                    XK_Menu,    spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/clipboard") },
-	{ 0|Mod1Mask|ControlMask,	      XK_f,	      spawn,	   	            {.v = flameshot } },
+//	{ 0|Mod1Mask|ControlMask,	      XK_Print,   spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/record") },
+//	{ MODKEY|ShiftMask,		          XK_q,	      spawn,          	      SHCMD("$HOME/.local/bin/dmenu/sysact") },
+//	{ 0|Mod1Mask|ControlMask,	      XK_p,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/dmenu-passmenu") },
+//	{ 0|Mod1Mask|ControlMask,	      XK_c,	      spawn,	   	            SHCMD("$HOME/.local/bin/dmenu/clipboard") },
+//	{ 0|Mod1Mask|ControlMask,	      XK_f,	      spawn,	   	            {.v = flameshot } },
 
 	  /* multimedia keys */
-	{ 0, XF86XK_PowerOff,   	                  spawn,		              SHCMD("$HOME/.local/bin/dmenu/sysact") },
-	{ 0, XF86XK_AudioMute,   	                  spawn,		              SHCMD("pamixer -t | dunst-volume") },
-	{ 0, XF86XK_AudioRaiseVolume,	              spawn,		              SHCMD("pamixer -i 5 | dunst-volume") },
-	{ 0, XF86XK_AudioLowerVolume,	              spawn,		              SHCMD("pamixer -d 5 | dunst-volume") },
-	{ 0, XF86XK_AudioMicMute,	                  spawn,		              SHCMD("pamixer --source 45 -t") },
-	{ 0, XF86XK_MonBrightnessUp,	              spawn,		              SHCMD("doas light -A 15") },
-	{ 0, XF86XK_MonBrightnessDown,	            spawn,		              SHCMD("doas light -U 15") },
-	{ 0, XF86XK_Display,			                  spawn,		              SHCMD("$HOME/.local/bin/dmenu/dmenu-display") },
-
-          /* unused keys */
-
-
+//	{ 0, XF86XK_PowerOff,   	                  spawn,		              SHCMD("$HOME/.local/bin/dmenu/sysact") },
+//	{ 0, XF86XK_AudioMute,   	                  spawn,		              SHCMD("pamixer -t | dunst-volume") },
+//	{ 0, XF86XK_AudioRaiseVolume,	              spawn,		              SHCMD("pamixer -i 5 | dunst-volume") },
+//	{ 0, XF86XK_AudioLowerVolume,	              spawn,		              SHCMD("pamixer -d 5 | dunst-volume") },
+//	{ 0, XF86XK_AudioMicMute,	                  spawn,		              SHCMD("pamixer --source 45 -t") },
+//	{ 0, XF86XK_MonBrightnessUp,	              spawn,		              SHCMD("doas light -A 15") },
+//	{ 0, XF86XK_MonBrightnessDown,	            spawn,		              SHCMD("doas light -U 15") },
+//	{ 0, XF86XK_Display,			                  spawn,		              SHCMD("$HOME/.local/bin/dmenu/dmenu-display") },
 };
 
 /* button definitions */
