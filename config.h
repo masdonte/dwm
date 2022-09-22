@@ -43,6 +43,7 @@ static const Rule rules[] = {
 	{ "librewolf",	NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "Steam",		  NULL,        		NULL,       (1 << 4),         0,         -1 },
+	{ "polymc",		  NULL,        		NULL,       (1 << 4),         0,         -1 },
 	{ "discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "mpv",		    NULL,			      NULL,       0,                1,         -1 },
 	{ "tidal-hifi",	NULL,			      NULL,       (1 << 3),         0,         -1 },
