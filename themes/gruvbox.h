@@ -1,4 +1,5 @@
-static const char col_gray1[]       = "#282828";
+//static const char col_gray1[]       = "#282828";
+static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#458588";
 static const char col_gray3[]       = "#689d6a";
 static const char col_gray4[]       = "#ffffff";
