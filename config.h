@@ -31,25 +31,26 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-//static const char *tags[] = { "", "", "", "", "", "", "" };
-static const char *tags[] = { "󰗀", "󰇧", "󰚇", "󰕧", "󰊗", "󰒍", "󰛑" };
+static const char *tags[] = { "", "", "", "", "", "", "" };
+//static const char *tags[] = { "󰗀", "󰇧", "󰚇", "󰕧", "󰊗", "󰒍", "󰛑" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class				instance        title       tags mask     isfloating   monitor */
-	{ "Brave",			NULL,        		NULL,       (1 << 1),         0,         -1 },
-	{ "librewolf",	NULL,        		NULL,       (1 << 1),         0,         -1 },
-	{ "Ripcord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
-	{ "Steam",		  NULL,        		NULL,       (1 << 4),         0,         -1 },
-	{ "polymc",		  NULL,        		NULL,       (1 << 4),         0,         -1 },
-	{ "discord",		NULL,        		NULL,       (1 << 2),         0,         -1 },
-	{ "mpv",		    NULL,			      NULL,       0,                1,         -1 },
-	{ "tidal-hifi",	NULL,			      NULL,       (1 << 3),         0,         -1 },
-	{ NULL,			    "spterm",    		NULL,	      SPTAG(0),	        1,	       -1 },
-	{ NULL,			    "spfm",	    		NULL,	      SPTAG(1),	        1,	       -1 },
-	{ NULL,			    "sppulsemixer",	NULL,	      SPTAG(2),	        1,	       -1 },
+	{ "Brave",			   NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "librewolf",	   NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "qutebrowser",   NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "discord",		   NULL,        		NULL,       (1 << 2),         0,         -1 },
+	{ "Ripcord",		   NULL,        		NULL,       (1 << 2),         0,         -1 },
+	{ "Steam",		     NULL,        		NULL,       (1 << 4),         0,         -1 },
+	{ "prismlauncher", NULL,        		NULL,       (1 << 4),         0,         -1 },
+	{ "mpv",		       NULL,			      NULL,       0,                1,         -1 },
+	{ "tidal-hifi",	   NULL,			      NULL,       (1 << 3),         0,         -1 },
+	{ NULL,			       "spterm",    		NULL,	      SPTAG(0),	        1,	       -1 },
+	{ NULL,			       "spfm",	    		NULL,	      SPTAG(1),	        1,	       -1 },
+	{ NULL,			       "sppulsemixer",	NULL,	      SPTAG(2),	        1,	       -1 },
 };
 
 /* layout(s) */
