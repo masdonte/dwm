@@ -13,7 +13,8 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "sans-serif:size=12", "materialdesignicons-webfont:size=12" };
 static const char dmenufont[]       = "sans-serif=12";
 //#include "themes/jmbi.h"
-#include "themes/gruvbox.h"
+//#include "themes/gruvbox.h"
+#include "themes/catppuccin.h"
 
 
 typedef struct {
