@@ -1,15 +1,17 @@
-static const char col_gray1[]       = "#303446";
-static const char col_gray2[]       = "#8caaee";
-static const char col_gray3[]       = "#a6d189";
-static const char col_gray4[]       = "#c6d0f5";
-static const char col_cyan[]        = "#c6d0f5";
-static const char *colors[][3]      = {
-	/*                      fg         bg          border    */
-	[SchemeNorm]      =   { col_gray4,  col_gray1,  col_gray3 },
-	[SchemeSel]       =   { col_gray4,  col_gray2,  col_gray2 },
-	[SchemeStatus]    =   { col_gray4, col_gray1,  "#303446" }, // Statusbar right
-	[SchemeTagsSel]   =   { col_gray4, col_gray2,  "#303446" }, // Tagbar left selected
-	[SchemeTagsNorm]  =   { col_gray4, col_gray1,  "#303446" }, // Tagbar left unselected
-  [SchemeInfoSel]   =   { col_gray4, col_gray1,  "#303446" }, // infobar middle selected
-  [SchemeInfoNorm]  =   { col_gray4, col_gray1,  "#303446" }, // infobar middle unselected
-};
+static const char rosewater[] =	"#f5e0dc";
+static const char flamingo[] =	"#f2cdcd";
+static const char pink[] =	"#f5c2e7";
+static const char mauve[] =	"#cba6f7";
+static const char red[] =	"#f38ba8";
+static const char maroon[] =	"#eba0ac";
+static const char peach[] =	"#fab387";
+static const char yellow[] =	"#f9e2af";
+static const char green[] =	"#a6e3a1";
+static const char teal[] =	"#94e2d5";
+static const char sky[] =	"#89dceb";
+static const char sapphire[] =	"#74c7ec";
+static const char blue[] =	"#89b4fa";
+static const char lavender[] =	"#b4befe";
+static const char white[] =	"#cdd6f4";
+static const char gray[] = "#6c7086";
+static const char black[] =	"#1e1e2e";

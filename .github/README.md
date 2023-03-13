@@ -2,28 +2,33 @@
 
 Dwm is an extremely fast, small, and dynamic window manager. This is my build of dwm with only a few patches, feel free to visit the suckless website and add the patches you want (rename the `config.h` to `config.def.h` before applying a patch).
 
-![Screenshot of my desktop](https://raw.githubusercontent.com/Binetto/dwm/master/.github/assets/screenshot.png)
+<!--- TODO add screenshot ![Screenshot of my desktop](https://raw.githubusercontent.com/Binetto/dwm/master/.github/assets/screenshot.png) --->
 
 ## Patches list
 + alwayscenter (floating client will always be in the middle of the screen)
 + attachbelow (open new client below the focused one)
-+ colorbar (change the color of the bar)
++ bar-height-spacing (adjust bar's height)
++ colorfultags (add different colors to every tags)
 + cursorwarp (cursor will be on the focus client)
++ fixborders (make client's border opaque with compositor)
 + fullgaps (add gaps)
 + [fullscreen-compilation](https://github.com/paniash/dwm/blob/master/patches/dwm-fullscreen-compilation-6.2.diff) (i added a line to fix fakefullscreen issues with chromium based browser. Thanks to [bakkeby](https://github.com/bakkeby))
-+ hide-vacant-tags (prevents dwm from drawing tags with no clients on the bar)
 + movestack (move client in the stack)
 + noborder (no border and no gaps when there's only one client)
+<!-- TODO notitle (remove status bar's title) -->
 + pertag (keep the layout per tag instead of per monitor)
+<!-- refrashratetags (unlock refresh rate limite when moving clients) -->
 + scratchpads (spawn and hide a floating terminal window)
++ status2d (add colors to status bar)
 + statusallmons (status bar on all monitor)
-+ zoomswap (swap between the focused window and the master)
++ underlinetags (add line under tags when selected)
+<!-- TODO zoomswap (swap between the focused window and the master) -->
 
 ## Dependencies
 + st
 + dmenu
 + slstatus (status bar)
-+ awesome font or change the tags icon in the `config.h` file at line 46:
++ awesome & material icons font or change the tags icon in the `config.h` file at line 55:
 ``` C
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -51,16 +56,24 @@ The MODKEY is set to the Super key (aka the Windows key).
 | `MODKEY + left` | switches focus to prev monitors |
 
 ## Installation
-Clone this repo `git clone https://github.com/Binetto/dwm.git`, edit the `config.h` file and run `sudo make install`.
-Everytime you edit the config file, you need to recompile `sudo make clean install`.
+Clone this repo `git clone https://github.com/Binetto/dwm.git`, edit the `config.h` file and run `doas/sudo make install`.
+Everytime you edit the config file, you need to recompile `doas/sudo make clean install`.
 
-On Nixos, add this to your configuration.nix file:
+On Nixos with flake enabled, add this to your configuration file:
 ``` nix
-nixpkgs.config.packageOverrides = pkgs: rec {
-    	dwm-head = callPackage path/to/dwm/folder {};
+# flake.nix
+inputs = {
+  dwm = { url = "github:binettexyz/dwm"; flake = false; };
 };
-
-environment.systemPackages = with pkgs; [
-  	dwm-head
-];
+```
+``` nix
+# configuration.nix
+{ inputs, ... }:
+let
+  dwm = pkgs.callPackage (inputs.dwm + "/default.nix") {};
+in {
+  environment.systemPackages = with pkgs; [
+    dwm
+  ];
+}
 ```

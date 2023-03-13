@@ -4,18 +4,38 @@
 #define TERMINAL "st"
 #define TERMCLASS "st"
 
+/* Theme */
+#include "themes/catppuccin.h"
+
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "sans-serif:size=12", "materialdesignicons-webfont:size=12" };
-static const char dmenufont[]       = "sans-serif=12";
-//#include "themes/jmbi.h"
-//#include "themes/gruvbox.h"
-#include "themes/catppuccin.h"
-
+static const int barheight          = 10;
+static const unsigned int colorfultag = 1;      /* 0 means use SchemeSel for selected tag */
+static const char *fonts[]          = { "monospace:size=12", "FontAwesome6Free=16", "materialdesignicons-webfont:size=15" };
+static const char dmenufont[]       = "monospace:size=12";
+static const char col_gray1[]       = "#222222";
+static const char col_gray2[]       = "#444444";
+static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#005577";
+static const char *colors[][3]      = {
+	//               fg         bg         border
+	[SchemeNorm] = { gray,   black, green },
+	[SchemeSel]  = { gray,   black, sky  },
+  [SchemeTag]  = { gray,   black, NULL }, /* Inactive tag. */
+  [SchemeTag1] = { pink,   black, NULL },
+  [SchemeTag2] = { mauve,  black, NULL },
+  [SchemeTag3] = { red,    black, NULL },
+  [SchemeTag4] = { maroon, black, NULL },
+  [SchemeTag5] = { peach,  black, NULL },
+  [SchemeTag6] = { yellow, black, NULL },
+  [SchemeTag7] = { green,  black, NULL },
+  /* And so forth... */
+};
 
 typedef struct {
 	const char *name;
@@ -32,8 +52,26 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "" };
-//static const char *tags[] = { "󰗀", "󰇧", "󰚇", "󰕧", "󰊗", "󰒍", "󰛑" };
+static const char *tags[] = { "󰧚", "󰈹", "󰇮", "", "󰊗", "", "󰈉" };
+static const int  tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
+                                   SchemeTag4, SchemeTag5, SchemeTag6,
+                                   SchemeTag7 };
+
+static const char *tagsel[][2] = {
+	{ pink, black },
+	{ mauve, black },
+	{ red, black },
+	{ maroon, black },
+	{ peach, black },
+  { yellow, black },
+  { green, black },
+};
+
+static const unsigned int ulinepad = 9;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke	= 4;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset = 0;	/* how far above the bottom of the bar the line should appear */
+static const int ulineall	= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -55,10 +93,11 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
+static const float mfact = 0.50; /* factor of master area size [0.05..0.95] */
+static const int nmaster = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int attachbelow = 0;    /* 1 means attach after the currently active window */
+static const int attachbelow = 1;    /* 1 means attach after the currently active window */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -91,7 +130,7 @@ static const char *flameshot[]     = { "flameshot", "gui", NULL };
 #include "shiftview.c"
 #include <X11/XF86keysym.h>
 
-static Key keys[] = {
+static const Key keys[] = {
 	/* modifier                     key        function              argument */
 
 	  /* Tags */
@@ -185,11 +224,10 @@ static Key keys[] = {
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
-static Button buttons[] = {
+static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },

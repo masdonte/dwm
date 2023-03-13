@@ -2,7 +2,7 @@
 with lib;
 
 stdenv.mkDerivation {
-  name = "dwm-head";
+  name = "dwm";
 
   src = builtins.filterSource
     (path: type: (toString path) != (toString ./.git)) ./.;
