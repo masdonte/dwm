@@ -1,4 +1,4 @@
 #!/bin/sh
 pushd  /etc/nixos
-doas nix flake lock --update-input dwm_test
+doas nix flake lock --update-input dwm
 popd
