@@ -14,4 +14,4 @@ static const char blue[] =	"#89b4fa";
 static const char lavender[] =	"#b4befe";
 static const char white[] =	"#cdd6f4";
 static const char gray[] = "#6c7086";
-static const char black[] =	"#1e1e2e";
+static const char black[] =	"#11111b";
