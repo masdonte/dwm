@@ -149,7 +149,7 @@ static const Key keys[] = {
 
 	  /* Important bind */
 	{ MODKEY,             		      XK_q,       killclient,							{0} },
-	{ MODKEY|ShiftMask,             XK_delete,  quit,										{0} },
+	{ MODKEY|ShiftMask,             XK_Delete,  quit,										{0} },
 	{ MODKEY,                       XK_b,       togglebar,							{0} },
 
 	  /* Gaps */
