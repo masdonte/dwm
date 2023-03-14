@@ -2,7 +2,7 @@
 
 Dwm is an extremely fast, small, and dynamic window manager. This is my build of dwm with only a few patches, feel free to visit the suckless website and add the patches you want (rename the `config.h` to `config.def.h` before applying a patch).
 
-<!--- TODO add screenshot ![Screenshot of my desktop](https://raw.githubusercontent.com/Binetto/dwm/master/.github/assets/screenshot.png) --->
+![Screenshot of my desktop](https://raw.githubusercontent.com/binettexyz/dwm/master/.github/assets/screenshot.png)
 
 ## Patches list
 + alwayscenter (floating client will always be in the middle of the screen)
@@ -37,23 +37,23 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 ## Keybinding
 The MODKEY is set to the Super key (aka the Windows key).
 
-| Keybinding | Action |
-| :--- | :--- |
-| `MODKEY + RETURN` | opens terminal |
-| `ALT + t` | opens terminal in scratchpad |
-| `MODKEY + d` | opens dmenu |
-| `MODKEY + q` | closes focused window |
-| `MODKEY + SHIFT + q` | quits dwm |
-| `MODKEY + 1-6` | switch focus to workspace |
-| `MODKEY + SHIFT + 1-6` | send focused window to workspace |
-| `MODKEY + l` | switches focus between windows in the stack |
-| `MODKEY + h` | switches focus between windows in the stack |
-| `MODKEY + SHIFT + l` | rotates the windows in the stack |
-| `MODKEY + SHIFT + h` | rotates the windows in the stack |
-| `MODKEY + comma` | expands size of window |
-| `MODKEY + period` | shrinks size of window |
-| `MODKEY + right` | switches focus next monitors |
-| `MODKEY + left` | switches focus to prev monitors |
+| Keybinding                | Action                                      |
+| :---                      | :---                                        |
+| `MODKEY + RETURN`         | opens terminal                              |
+| `ALT + t`                 | opens terminal in scratchpad                |
+| `MODKEY + d`              | opens dmenu                                 |
+| `MODKEY + q`              | closes focused window                       |
+| `MODKEY + SHIFT + Delete` | quits dwm                                   |
+| `MODKEY + 1-7`            | switch focus to workspace                   |
+| `MODKEY + SHIFT + 1-7`    | send focused window to workspace            |
+| `MODKEY + j`              | switches focus between windows in the stack |
+| `MODKEY + k`              | switches focus between windows in the stack |
+| `MODKEY + SHIFT + l`      | rotates the windows in the stack            |
+| `MODKEY + SHIFT + h`      | rotates the windows in the stack            |
+| `MODKEY + l`          | expands size of window                      |
+| `MODKEY + h`         | shrinks size of window                      |
+| `MODKEY + comma`     | switches focus next monitors                |
+| `MODKEY + period`    | switches focus to prev monitors             |
 
 ## Installation
 Clone this repo `git clone https://github.com/Binetto/dwm.git`, edit the `config.h` file and run `doas/sudo make install`.
