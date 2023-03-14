@@ -15,8 +15,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int barheight          = 10;
 static const unsigned int colorfultag = 1;      /* 0 means use SchemeSel for selected tag */
-static const char *fonts[]          = { "monospace:size=12", "FontAwesome6Free=16", "materialdesignicons-webfont:size=15" };
-static const char dmenufont[]       = "monospace:size=12";
+static const char *fonts[]          = { "sans-serif:size=12", "FontAwesome6Free=16", "materialdesignicons-webfont:size=15" };
+static const char dmenufont[]       = "sans-serif:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
