@@ -5,7 +5,7 @@
 #define TERMCLASS "st"
 
 /* Theme */
-#include "themes/catppuccin.h"
+#include "themes/gruvbox-material.h"
 
 /* appearance */
 static const unsigned int borderpx    = 2;        /* border pixel of windows */
@@ -17,30 +17,12 @@ static const int barheight            = 10;       /* 0 means height will depend 
 static const unsigned int colorfultag = 1;      /* 0 means use SchemeSel for selected tag */
 static const char *fonts[]     = { "sans-serif:size=14", "materialdesignicons-webfont:size=15" };
 static const char dmenufont[]  = "sans-serif:size=14";
-static const char col_gray1[]  = "#222222";
-static const char col_gray2[]  = "#444444";
-static const char col_gray3[]  = "#bbbbbb";
-static const char col_gray4[]  = "#eeeeee";
-static const char col_cyan[]   = "#005577";
-static const char *colors[][3] = {
-	//               fg         bg         border
-	[SchemeNorm] = { gray,   black, green },
-	[SchemeSel]  = { gray,   black, sky  },
-  [SchemeTag]  = { gray,   black, NULL }, /* Inactive tag. */
-  [SchemeTag1] = { pink,   black, NULL },
-  [SchemeTag2] = { mauve,  black, NULL },
-  [SchemeTag3] = { red,    black, NULL },
-  [SchemeTag4] = { maroon, black, NULL },
-  [SchemeTag5] = { peach,  black, NULL },
-  [SchemeTag6] = { yellow, black, NULL },
-  [SchemeTag7] = { green,  black, NULL },
-  /* And so forth... */
-};
 
 typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
+
 const char *spcmd1[] = { TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = { TERMINAL, "-n", "spfm", "-g", "100x41", "-e", "lf", NULL };
 const char *spcmd3[] = { TERMINAL, "-n", "sppulsemixer", "-g", "120x34", "-e", "pulsemixer", NULL };
@@ -56,17 +38,6 @@ static const char *tags[] = { "󰧚", "󰈹", "󰇮", "󰕧", "󰊗", "󰣳", "�
 static const int  tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
                                    SchemeTag4, SchemeTag5, SchemeTag6,
                                    SchemeTag7 };
-
-static const char *tagsel[][2] = {
-/*  fg      bg     */
-	{ pink,   black },
-	{ mauve,  black },
-	{ red,    black },
-	{ maroon, black },
-	{ peach,  black },
-  { yellow, black },
-  { green,  black },
-};
 
 static const unsigned int ulinepad = 9;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 4;	/* thickness / height of the underline */
