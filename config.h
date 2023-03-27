@@ -15,8 +15,8 @@ static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 1;        /* 0 means bottom bar */
 static const int barheight            = 10;       /* 0 means height will depend on font size */
 static const unsigned int colorfultag = 1;      /* 0 means use SchemeSel for selected tag */
-static const char *fonts[]     = { "sans-serif:size=14", "materialdesignicons-webfont:size=15" };
-static const char dmenufont[]  = "sans-serif:size=14";
+static const char *fonts[]     = { "sans-serif:size=12", "materialdesignicons-webfont:size=20" };
+static const char dmenufont[]  = "sans-serif:size=12";
 
 typedef struct {
 	const char *name;
