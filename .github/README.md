@@ -28,11 +28,6 @@ Dwm is an extremely fast, small, and dynamic window manager. This is my build of
 + st
 + dmenu
 + slstatus (status bar)
-+ awesome & material icons font or change the tags icon in the `config.h` file at line 55:
-``` C
-/* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-```
 
 ## Keybinding
 The MODKEY is set to the Super key (aka the Windows key).
