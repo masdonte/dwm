@@ -34,7 +34,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "󰧚", "󰈹", "󰇮", "󰕧", "󰊗", "󰣳", "󰈉" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7v" };
 static const int  tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
                                    SchemeTag4, SchemeTag5, SchemeTag6,
                                    SchemeTag7 };
@@ -50,8 +50,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class				instance        title       tags mask     isfloating   monitor */
-	{ "Brave",			   NULL,        		NULL,       (1 << 1),         0,         -1 },
-	{ "librewolf",	   NULL,        		NULL,       (1 << 1),         0,         -1 },
+	{ "firefox",	   NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "qutebrowser",   NULL,        		NULL,       (1 << 1),         0,         -1 },
 	{ "discord",		   NULL,        		NULL,       (1 << 2),         0,         -1 },
 	{ "Ripcord",		   NULL,        		NULL,       (1 << 2),         0,         -1 },
@@ -105,15 +104,15 @@ static const Key keys[] = {
 	/* modifier                     key        function              argument */
 
 	  /* Tags */
-	TAGKEYS(                       	XK_1,																0)
-	TAGKEYS(                        XK_2,														  	1)
-	TAGKEYS(                        XK_3,																2)
-	TAGKEYS(                        XK_4,														  	3)
-	TAGKEYS(                        XK_5,													    	4)
-	TAGKEYS(                        XK_6,														  	5)
-	TAGKEYS(                        XK_7,															 	6)
-	/*TAGKEYS(                      XK_8,																7)*/
-	/*TAGKEYS(                      XK_9,																8)*/
+	TAGKEYS(                        XK_ampersand,              0)
+	TAGKEYS(                        XK_eacute,                 1)
+  TAGKEYS(                        XK_quotedbl,               2)
+	TAGKEYS(                        XK_apostrophe,             3)
+	TAGKEYS(                        XK_parenleft,              4)
+	TAGKEYS(                        XK_minus,                  5)
+	TAGKEYS(                        XK_egrave,                 6)
+	TAGKEYS(                        XK_underscore,             7)
+	TAGKEYS(                        XK_ccedilla,               8)
 	{ MODKEY,                       XK_0,       view,										{.ui = ~0 } },
 	{ MODKEY,			                  XK_Tab,     shiftview,							{ .i = +1 } },
 	{ MODKEY,			                  XK_grave,   shiftview,							{ .i = -1 } },
@@ -150,12 +149,6 @@ static const Key keys[] = {
 
 	{ MODKEY,                       XK_t,       setlayout,      	      {.v = &layouts[0]} },
 	/*{ MODKEY,                     XK_space,   setlayout,      	      {0} },*/
-
-	  /* Switching between monitors */
-	{ MODKEY,                       XK_comma,   focusmon,								{.i = -1 } },
-	{ MODKEY,                       XK_period,  focusmon,								{.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,   tagmon,									{.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period,  tagmon,									{.i = +1 } },
 
 	  /* Scratchpads */
 	{ 0|Mod1Mask,            	      XK_t,  	    togglescratch,					{.ui = 0 } }, // terminal
