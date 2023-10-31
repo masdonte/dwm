@@ -163,6 +163,8 @@ static const Key keys[] = {
 	{ MODKEY|Mod1Mask,          	  XK_b,       spawn,									{.v = browser } },
 	{ MODKEY|Mod1Mask,       	      XK_d,       spawn,									SHCMD("discord") },
 	{ MODKEY|Mod1Mask,       	      XK_n,       spawn,									SHCMD(TERMINAL "-e newsboat") },
+	{ MODKEY|Mod1Mask,       	      XK_,       spawn,									SHCMD("obsidian") },
+
 
 	  /* Apps Launched with SUPER + SHIFT + KEY */
 //{ MODKEY|ShiftMask,       	    XK_Return,  spawn,          	      {.v = tmux } },
